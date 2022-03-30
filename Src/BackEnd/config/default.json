@@ -1,0 +1,20 @@
+{
+    "dbconnections": {
+        "mongodb": {
+            "host": "academydb.6ql9g.mongodb.net",
+            "user": "acad_rest_api_user",
+            "password": "GMa0HlaBgb0okw3z",
+            "dbname": "academyDB"
+        }
+    },
+    "secretKeys": {
+        "cryptoJs": "4jTaAxXpt6"
+    },
+    "roles": {
+        "student": "1",
+        "teacher": "2"
+    },
+    "portsDefault": {
+        "localhostPort": 2999
+    }
+}
