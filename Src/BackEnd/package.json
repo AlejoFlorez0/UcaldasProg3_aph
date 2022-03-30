@@ -2,15 +2,16 @@
   "name": "ucaldas_prog3_aph",
   "version": "1.0.0",
   "description": "Proyecto de programación 3 de la universidad de caldas",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "no test specified"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AlejoFlorez0",
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.7",
     "express": "^4.17.2",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.15"
   }
 }
