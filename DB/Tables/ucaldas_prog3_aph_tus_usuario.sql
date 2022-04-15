@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `ucaldas_prog3_aph` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ucaldas_prog3_aph`;
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 34.201.68.65    Database: ucaldas_prog3_aph
 -- ------------------------------------------------------
@@ -16,30 +18,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tus_usuarioRol`
+-- Table structure for table `tus_usuario`
 --
 
-DROP TABLE IF EXISTS `tus_usuarioRol`;
+DROP TABLE IF EXISTS `tus_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tus_usuarioRol` (
+CREATE TABLE `tus_usuario` (
   `nroDocumento` int(11) NOT NULL,
-  `idRol` int(11) NOT NULL,
-  PRIMARY KEY (`nroDocumento`,`idRol`),
-  KEY `fk_usuarioRol_idRol_idx` (`idRol`),
-  CONSTRAINT `fk_usuarioRol_idRol` FOREIGN KEY (`idRol`) REFERENCES `tus_rol` (`idRol`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuarioRol_nroDocumento` FOREIGN KEY (`nroDocumento`) REFERENCES `tus_usuario` (`nroDocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `primerNombre` varchar(80) NOT NULL,
+  `segundoNombre` varchar(80) DEFAULT NULL,
+  `primerApellido` varchar(200) NOT NULL,
+  `segundoApellido` varchar(200) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `celular` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`nroDocumento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tus_usuarioRol`
---
-
-LOCK TABLES `tus_usuarioRol` WRITE;
-/*!40000 ALTER TABLE `tus_usuarioRol` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tus_usuarioRol` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +45,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 19:01:10
+-- Dump completed on 2022-04-15 17:10:50

@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `ucaldas_prog3_aph` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ucaldas_prog3_aph`;
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 34.201.68.65    Database: ucaldas_prog3_aph
 -- ------------------------------------------------------
@@ -16,29 +18,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tus_rol`
+-- Table structure for table `tadm_multaUsuario`
 --
 
-DROP TABLE IF EXISTS `tus_rol`;
+DROP TABLE IF EXISTS `tadm_multaUsuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tus_rol` (
-  `idRol` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(450) DEFAULT NULL,
-  PRIMARY KEY (`idRol`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `tadm_multaUsuario` (
+  `idMulta` int(11) NOT NULL,
+  `nroDocumento` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  PRIMARY KEY (`idMulta`,`nroDocumento`),
+  KEY `fk_tadm_multaUsuario_nroIdentificacion_idx` (`nroDocumento`),
+  CONSTRAINT `fk_tadm_multaUsuario_idMulta` FOREIGN KEY (`idMulta`) REFERENCES `tadm_multa` (`idMulta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tadm_multaUsuario_nroIdentificacion` FOREIGN KEY (`nroDocumento`) REFERENCES `tus_usuario` (`nroDocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tus_rol`
---
-
-LOCK TABLES `tus_rol` WRITE;
-/*!40000 ALTER TABLE `tus_rol` DISABLE KEYS */;
-INSERT INTO `tus_rol` VALUES (1,'Administrador',NULL),(2,'Propietarios',NULL),(3,'Contador',NULL),(4,'Revisor fiscal',NULL),(5,'Vigilantes',NULL),(6,'Habitantes',NULL);
-/*!40000 ALTER TABLE `tus_rol` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 19:01:26
+-- Dump completed on 2022-04-15 17:10:47

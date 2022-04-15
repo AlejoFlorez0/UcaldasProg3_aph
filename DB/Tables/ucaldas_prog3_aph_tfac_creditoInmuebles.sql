@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `ucaldas_prog3_aph` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ucaldas_prog3_aph`;
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 34.201.68.65    Database: ucaldas_prog3_aph
 -- ------------------------------------------------------
@@ -16,28 +18,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tadm_seccion`
+-- Table structure for table `tfac_creditoInmuebles`
 --
 
-DROP TABLE IF EXISTS `tadm_seccion`;
+DROP TABLE IF EXISTS `tfac_creditoInmuebles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tadm_seccion` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(450) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `tfac_creditoInmuebles` (
+  `idCreditoInmueble` int(11) NOT NULL,
+  `idInmueble` int(11) NOT NULL,
+  `valor` int(11) NOT NULL,
+  `motivo` varchar(500) NOT NULL,
+  PRIMARY KEY (`idCreditoInmueble`,`idInmueble`),
+  KEY `fk_tfac_creditoInmuebles_idInmueble_idx` (`idInmueble`),
+  CONSTRAINT `fk_tfac_creditoInmuebles_idInmueble` FOREIGN KEY (`idInmueble`) REFERENCES `tadm_inmueble` (`idInmueble`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='El saldo podrá ser credito (valores positivos)';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tadm_seccion`
---
-
-LOCK TABLES `tadm_seccion` WRITE;
-/*!40000 ALTER TABLE `tadm_seccion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tadm_seccion` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 19:01:04
+-- Dump completed on 2022-04-15 17:11:02

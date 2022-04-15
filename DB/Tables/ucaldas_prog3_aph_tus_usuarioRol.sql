@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `ucaldas_prog3_aph` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ucaldas_prog3_aph`;
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 34.201.68.65    Database: ucaldas_prog3_aph
 -- ------------------------------------------------------
@@ -16,31 +18,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tadm_zonaSocial`
+-- Table structure for table `tus_usuarioRol`
 --
 
-DROP TABLE IF EXISTS `tadm_zonaSocial`;
+DROP TABLE IF EXISTS `tus_usuarioRol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tadm_zonaSocial` (
-  `idZonaSocial` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `rutaFotografia` varchar(200) DEFAULT NULL,
-  `descripcion` varchar(450) DEFAULT NULL,
-  `costoAlquiler` int(6) NOT NULL,
-  `horarioAcceso` varchar(50) NOT NULL,
-  PRIMARY KEY (`idZonaSocial`)
+CREATE TABLE `tus_usuarioRol` (
+  `nroDocumento` int(11) NOT NULL,
+  `idRol` int(11) NOT NULL,
+  PRIMARY KEY (`nroDocumento`,`idRol`),
+  KEY `fk_usuarioRol_idRol_idx` (`idRol`),
+  CONSTRAINT `fk_usuarioRol_idRol` FOREIGN KEY (`idRol`) REFERENCES `tus_rol` (`idRol`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarioRol_nroDocumento` FOREIGN KEY (`nroDocumento`) REFERENCES `tus_usuario` (`nroDocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tadm_zonaSocial`
---
-
-LOCK TABLES `tadm_zonaSocial` WRITE;
-/*!40000 ALTER TABLE `tadm_zonaSocial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tadm_zonaSocial` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 19:01:35
+-- Dump completed on 2022-04-15 17:10:42
