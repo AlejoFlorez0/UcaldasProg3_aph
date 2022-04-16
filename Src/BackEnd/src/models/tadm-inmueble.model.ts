@@ -1,4 +1,7 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {TadmSeccion} from './tadm-seccion.model';
+import {TadmTipoInmueble} from './tadm-tipo-inmueble.model';
+import {TusUsuarios} from './tus-usuarios.model';
 
 @model()
 export class TadmInmueble extends Entity {
@@ -20,6 +23,17 @@ export class TadmInmueble extends Entity {
   })
   idseccion?: number;
 
+  @belongsTo(() => TadmSeccion, {name: 'idSeccions'})
+  idSeccion: number;
+
+  @belongsTo(() => TadmTipoInmueble, {name: 'id_TipoInmueble'})
+  idTipoInmueble: number;
+
+  @belongsTo(() => TusUsuarios, {name: 'idPropiedario'})
+  nroDocumentoPropietario: number;
+
+  @belongsTo(() => TusUsuarios, {name: 'idHabitante'})
+  nroDocumentoHabitante: number;
 
   constructor(data?: Partial<TadmInmueble>) {
     super(data);

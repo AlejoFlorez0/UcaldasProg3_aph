@@ -15,3 +15,8 @@ export * from './tus-usuarios.controller';
 export * from './tus-usuarios-tus-rol.controller';
 export * from './tus-usuarios-tadm-multa.controller';
 export * from './tus-usuarios-tadm-zona-social.controller';
+export * from './tadm-inmueble-tadm-seccion.controller';
+export * from './tadm-inmueble-tadm-tipo-inmueble.controller';
+export * from './tadm-inmueble-tus-usuarios.controller';
+export * from './tadm-inmuebles-adicionales-tadm-inmueble.controller';
+export * from './tfac-credito-inmueble-tadm-inmueble.controller';
