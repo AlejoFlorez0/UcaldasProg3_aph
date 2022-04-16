@@ -12,4 +12,6 @@ export * from './tge-parametros.controller';
 export * from './tus-rol.controller';
 export * from './tus-usuario-rol.controller';
 export * from './tus-usuarios.controller';
-
+export * from './tus-usuarios-tus-rol.controller';
+export * from './tus-usuarios-tadm-multa.controller';
+export * from './tus-usuarios-tadm-zona-social.controller';
