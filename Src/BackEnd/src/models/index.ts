@@ -16,3 +16,4 @@ export * from './tadm-multa-usuario.model';
 export * from './tadm-zona-social-usuario.model';
 export * from './tus-usuario-rol.model';
 export * from './tus-usuarios.model';
+export * from './tfac-debito-inmueble.model';
