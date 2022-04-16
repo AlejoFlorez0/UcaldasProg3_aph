@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {TadmInmueble} from './tadm-inmueble.model';
 
 @model()
 export class TfacCreditoInmueble extends Entity {
@@ -15,6 +16,8 @@ export class TfacCreditoInmueble extends Entity {
   })
   saldo: number;
 
+  @belongsTo(() => TadmInmueble, {name: 'CreditoInmueble'})
+  idInmueble: number;
 
   constructor(data?: Partial<TfacCreditoInmueble>) {
     super(data);
