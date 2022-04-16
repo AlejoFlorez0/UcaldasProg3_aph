@@ -11,3 +11,5 @@ export * from './tge-parametros.repository';
 export * from './tus-rol.repository';
 export * from './tus-usuario-rol.repository';
 export * from './tus-usuarios.repository';
+export * from './tus-usuarios.repository';
+export * from './tus-usuario-rol.repository';
