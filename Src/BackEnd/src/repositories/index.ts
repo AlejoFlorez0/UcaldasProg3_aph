@@ -13,3 +13,4 @@ export * from './tus-usuario-rol.repository';
 export * from './tus-usuarios.repository';
 export * from './tus-usuarios.repository';
 export * from './tus-usuario-rol.repository';
+export * from './tfac-debito-inmueble.repository';

@@ -20,3 +20,5 @@ export * from './tadm-inmueble-tadm-tipo-inmueble.controller';
 export * from './tadm-inmueble-tus-usuarios.controller';
 export * from './tadm-inmuebles-adicionales-tadm-inmueble.controller';
 export * from './tfac-credito-inmueble-tadm-inmueble.controller';
+export * from './tfac-debito-inmueble.controller';
+export * from './tfac-debito-inmueble-tadm-inmueble.controller';
