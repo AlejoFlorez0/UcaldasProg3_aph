@@ -11,3 +11,4 @@ export * from './tfac-credito-inmueble.controller';
 export * from './tge-parametros.controller';
 export * from './tus-rol.controller';
 export * from './tus-usuarios.controller';
+export * from './tus-usuarios-tus-usuario-rol.controller';

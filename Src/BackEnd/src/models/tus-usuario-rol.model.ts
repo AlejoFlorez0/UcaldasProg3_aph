@@ -3,6 +3,11 @@ import {Entity, model, property} from '@loopback/repository';
 @model()
 export class TusUsuarioRol extends Entity {
 
+  @property({
+    type: 'number',
+  })
+  tusUsersDocument?: number;
+
   constructor(data?: Partial<TusUsuarioRol>) {
     super(data);
   }
