@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ucaldas_prog3_aph` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `ucaldas_prog3_aph`;
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ucaldas_prog3_aph
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,19 +16,33 @@ USE `ucaldas_prog3_aph`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tus_rol`
+-- Table structure for table `tadmmultausuario`
 --
 
-DROP TABLE IF EXISTS `tus_rol`;
+DROP TABLE IF EXISTS `tadmmultausuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tus_rol` (
-  `idRol` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(450) DEFAULT NULL,
-  PRIMARY KEY (`idRol`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `tadmmultausuario` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idMulta` int NOT NULL,
+  `nroDocumento` int NOT NULL,
+  `fecha` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_tadm_multaUsuario_nroIdentificacion_idx` (`nroDocumento`),
+  KEY `fk_tadm_multaUsuario_idMulta` (`idMulta`),
+  CONSTRAINT `fk_tadm_multaUsuario_idMulta` FOREIGN KEY (`idMulta`) REFERENCES `tadmmulta` (`idMulta`),
+  CONSTRAINT `fk_tadm_multaUsuario_nroIdentificacion` FOREIGN KEY (`nroDocumento`) REFERENCES `tususuario` (`nroDocumento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tadmmultausuario`
+--
+
+LOCK TABLES `tadmmultausuario` WRITE;
+/*!40000 ALTER TABLE `tadmmultausuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tadmmultausuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -41,4 +53,4 @@ CREATE TABLE `tus_rol` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-18 15:31:51
+-- Dump completed on 2022-05-15 19:00:23

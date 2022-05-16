@@ -1,17 +1,6 @@
 import { inject, lifeCycleObserver, LifeCycleObserver } from '@loopback/core';
 import { juggler } from '@loopback/repository';
 
-const bk_config = {
-  name: 'mysql',
-  connector: 'mysql',
-  url: '',
-  host: '34.201.68.65',
-  port: 3306,
-  user: 'usrAdmin',
-  password: 'pVBfVWpd',
-  database: 'ucaldas_prog3_aph2'
-};
-
 const config = {
   name: 'mysql',
   connector: 'mysql',
