@@ -15,6 +15,15 @@ export class Tadmzonasocialusuario extends Entity {
   })
   fechaUso: string;
 
+  @property({
+    type: 'number',
+  })
+  nroDocumento?: number;
+
+  @property({
+    type: 'number',
+  })
+  idZonaSocial?: number;
 
   constructor(data?: Partial<Tadmzonasocialusuario>) {
     super(data);

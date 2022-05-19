@@ -1,4 +1,10 @@
-import { Entity, model, property } from '@loopback/repository';
+import { Entity, model, property, hasMany} from '@loopback/repository';
+import {Tusrol} from './tusrol.model';
+import {Tususuariorol} from './tususuariorol.model';
+import {Tadmzonasocial} from './tadmzonasocial.model';
+import {Tadmzonasocialusuario} from './tadmzonasocialusuario.model';
+import {Tadmmulta} from './tadmmulta.model';
+import {Tadmmultausuario} from './tadmmultausuario.model';
 
 @model()
 export class Tususuario extends Entity {
@@ -45,6 +51,14 @@ export class Tususuario extends Entity {
   })
   celular: string;
 
+  @hasMany(() => Tusrol, {through: {model: () => Tususuariorol, keyFrom: 'nroDocumento', keyTo: 'idRol'}})
+  usuariosXrol: Tusrol[];
+
+  @hasMany(() => Tadmzonasocial, {through: {model: () => Tadmzonasocialusuario, keyFrom: 'nroDocumento', keyTo: 'idZonaSocial'}})
+  usuarioXzonasocial: Tadmzonasocial[];
+
+  @hasMany(() => Tadmmulta, {through: {model: () => Tadmmultausuario, keyFrom: 'nroDocumento', keyTo: 'idMulta'}})
+  usuarioXidmulta: Tadmmulta[];
 
   constructor(data?: Partial<Tususuario>) {
     super(data);

@@ -10,3 +10,5 @@ export * from './tgeparametros.repository';
 export * from './tusrol.repository';
 export * from './tususuario.repository';
 export * from './tususuariorol.repository';
+export * from './tadmmultausuario.repository';
+export * from './tadmzonasocialusuario.repository';

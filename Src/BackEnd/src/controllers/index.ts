@@ -6,3 +6,6 @@ export * from './tfacdebitoinmuebles-tadminmueble.controller';
 export * from './tadminmueblesadicionales-tadminmueble.controller';
 export * from './tadminmueble-tadmseccion.controller';
 export * from './tusrol-tususuario.controller';
+export * from './tususuario-tusrol.controller';
+export * from './tususuario-tadmzonasocial.controller';
+export * from './tususuario-tadmmulta.controller';

@@ -9,6 +9,15 @@ export class Tususuariorol extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  nroDocumento?: number;
+
+  @property({
+    type: 'number',
+  })
+  idRol?: number;
 
   constructor(data?: Partial<Tususuariorol>) {
     super(data);

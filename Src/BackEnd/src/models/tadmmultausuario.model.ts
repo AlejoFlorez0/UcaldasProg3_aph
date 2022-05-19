@@ -15,6 +15,15 @@ export class Tadmmultausuario extends Entity {
   })
   fecha: string;
 
+  @property({
+    type: 'number',
+  })
+  nroDocumento?: number;
+
+  @property({
+    type: 'number',
+  })
+  idMulta?: number;
 
   constructor(data?: Partial<Tadmmultausuario>) {
     super(data);
