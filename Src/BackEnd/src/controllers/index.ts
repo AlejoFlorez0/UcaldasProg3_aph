@@ -4,3 +4,5 @@ export * from './tadminmueble-tususuario.controller';
 export * from './tfaccreditoinmuebles-tadminmueble.controller';
 export * from './tfacdebitoinmuebles-tadminmueble.controller';
 export * from './tadminmueblesadicionales-tadminmueble.controller';
+export * from './tadminmueble-tadmseccion.controller';
+export * from './tusrol-tususuario.controller';
