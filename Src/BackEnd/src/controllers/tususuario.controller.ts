@@ -17,55 +17,55 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import { Tususuario } from '../models';
-import { TususuarioRepository } from '../repositories';
+import {Tususuario} from '../models';
+import {TususuarioRepository} from '../repositories';
 
-export class UsuariosController {
+export class TususuarioController {
   constructor(
     @repository(TususuarioRepository)
-    public TususuarioRepository: TususuarioRepository,
-  ) { }
+    public tususuarioRepository : TususuarioRepository,
+  ) {}
 
-  @post('/tus-usuarios')
+  @post('/tususuarios')
   @response(200, {
-    description: 'TusUsuario model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tususuario) } },
+    description: 'Tususuario model instance',
+    content: {'application/json': {schema: getModelSchemaRef(Tususuario)}},
   })
   async create(
     @requestBody({
       content: {
         'application/json': {
           schema: getModelSchemaRef(Tususuario, {
-            title: 'NewTusUsuario',
-
+            title: 'NewTususuario',
+            
           }),
         },
       },
     })
-    tusUsuario: Tususuario,
+    tususuario: Tususuario,
   ): Promise<Tususuario> {
-    return this.TususuarioRepository.create(tusUsuario);
+    return this.tususuarioRepository.create(tususuario);
   }
 
-  @get('/tus-usuarios/count')
+  @get('/tususuarios/count')
   @response(200, {
-    description: 'TusUsuario model count',
-    content: { 'application/json': { schema: CountSchema } },
+    description: 'Tususuario model count',
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tususuario) where?: Where<Tususuario>,
   ): Promise<Count> {
-    return this.TususuarioRepository.count(where);
+    return this.tususuarioRepository.count(where);
   }
 
-  @get('/tus-usuarios')
+  @get('/tususuarios')
   @response(200, {
-    description: 'Array of TusUsuario model instances',
+    description: 'Array of Tususuario model instances',
     content: {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tususuario, { includeRelations: true }),
+          items: getModelSchemaRef(Tususuario, {includeRelations: true}),
         },
       },
     },
@@ -73,45 +73,45 @@ export class UsuariosController {
   async find(
     @param.filter(Tususuario) filter?: Filter<Tususuario>,
   ): Promise<Tususuario[]> {
-    return this.TususuarioRepository.find(filter);
+    return this.tususuarioRepository.find(filter);
   }
 
-  @patch('/tus-usuarios')
+  @patch('/tususuarios')
   @response(200, {
-    description: 'TusUsuario PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    description: 'Tususuario PATCH success count',
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, { partial: true }),
+          schema: getModelSchemaRef(Tususuario, {partial: true}),
         },
       },
     })
-    tusUsuario: Tususuario,
+    tususuario: Tususuario,
     @param.where(Tususuario) where?: Where<Tususuario>,
   ): Promise<Count> {
-    return this.TususuarioRepository.updateAll(tusUsuario, where);
+    return this.tususuarioRepository.updateAll(tususuario, where);
   }
 
-  @get('/tus-usuarios/{id}')
+  @get('/tususuarios/{id}')
   @response(200, {
     description: 'Tususuario model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tususuario, { includeRelations: true }),
+        schema: getModelSchemaRef(Tususuario, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tususuario, { exclude: 'where' }) filter?: FilterExcludingWhere<Tususuario>
+    @param.filter(Tususuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Tususuario>
   ): Promise<Tususuario> {
-    return this.TususuarioRepository.findById(id, filter);
+    return this.tususuarioRepository.findById(id, filter);
   }
 
-  @patch('/tus-usuarios/{id}')
+  @patch('/tususuarios/{id}')
   @response(204, {
     description: 'Tususuario PATCH success',
   })
@@ -120,31 +120,31 @@ export class UsuariosController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, { partial: true }),
+          schema: getModelSchemaRef(Tususuario, {partial: true}),
         },
       },
     })
-    tusUsuario: Tususuario,
+    tususuario: Tususuario,
   ): Promise<void> {
-    await this.TususuarioRepository.updateById(id, tusUsuario);
+    await this.tususuarioRepository.updateById(id, tususuario);
   }
 
-  @put('/tus-usuarios/{id}')
+  @put('/tususuarios/{id}')
   @response(204, {
     description: 'Tususuario PUT success',
   })
   async replaceById(
     @param.path.number('id') id: number,
-    @requestBody() tusUsuario: Tususuario,
+    @requestBody() tususuario: Tususuario,
   ): Promise<void> {
-    await this.TususuarioRepository.replaceById(id, tusUsuario);
+    await this.tususuarioRepository.replaceById(id, tususuario);
   }
 
-  @del('/tus-usuarios/{id}')
+  @del('/tususuarios/{id}')
   @response(204, {
     description: 'Tususuario DELETE success',
   })
   async deleteById(@param.path.number('id') id: number): Promise<void> {
-    await this.TususuarioRepository.deleteById(id);
+    await this.tususuarioRepository.deleteById(id);
   }
 }

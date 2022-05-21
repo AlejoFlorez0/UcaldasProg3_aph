@@ -1,11 +1,10 @@
-export * from './usuarios.controller';
+
 export * from './tadminmueble-tadmtipoinmueble.controller';
 export * from './tadminmueble-tususuario.controller';
 export * from './tfaccreditoinmuebles-tadminmueble.controller';
 export * from './tfacdebitoinmuebles-tadminmueble.controller';
 export * from './tadminmueblesadicionales-tadminmueble.controller';
 export * from './tadminmueble-tadmseccion.controller';
-export * from './tusrol-tususuario.controller';
 export * from './tususuario-tusrol.controller';
 export * from './tususuario-tadmzonasocial.controller';
 export * from './tususuario-tadmmulta.controller';
@@ -15,3 +14,14 @@ export * from './tususuario-tadminmueble.controller';
 export * from './tadminmueble-tfaccreditoinmuebles.controller';
 export * from './tadminmueble-tfacdebitoinmuebles.controller';
 export * from './tadminmueble-tadminmueblesadicionales.controller';
+export * from './tadminmueble.controller';
+export * from './tadminmueblesadicionales.controller';
+export * from './tadmmulta.controller';
+export * from './tadmseccion.controller';
+export * from './tadmtipoinmueble.controller';
+export * from './tadmzonasocial.controller';
+export * from './tfaccreditoinmuebles.controller';
+export * from './tfacdebitoinmuebles.controller';
+export * from './tgeparametros.controller';
+export * from './tusrol.controller';
+export * from './tususuario.controller';
