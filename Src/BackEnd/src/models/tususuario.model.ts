@@ -5,6 +5,7 @@ import {Tadmzonasocial} from './tadmzonasocial.model';
 import {Tadmzonasocialusuario} from './tadmzonasocialusuario.model';
 import {Tadmmulta} from './tadmmulta.model';
 import {Tadmmultausuario} from './tadmmultausuario.model';
+import {Tadminmueble} from './tadminmueble.model';
 
 @model()
 export class Tususuario extends Entity {
@@ -59,6 +60,12 @@ export class Tususuario extends Entity {
 
   @hasMany(() => Tadmmulta, {through: {model: () => Tadmmultausuario, keyFrom: 'nroDocumento', keyTo: 'idMulta'}})
   usuarioXidmulta: Tadmmulta[];
+
+  @hasMany(() => Tadminmueble, {keyTo: 'nroDocumentoPropietario'})
+  fk_tadm_inmueble_nroDocumentoPropietario: Tadminmueble[];
+
+  @hasMany(() => Tadminmueble, {keyTo: 'nroDocumentoHabitante'})
+  fk_tadm_inmueble_nroDocumentoHabitante: Tadminmueble[];
 
   constructor(data?: Partial<Tususuario>) {
     super(data);
