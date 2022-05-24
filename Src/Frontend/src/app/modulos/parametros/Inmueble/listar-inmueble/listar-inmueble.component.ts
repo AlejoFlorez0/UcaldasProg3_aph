@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { inmuebleModel } from 'src/app/modelos/parametros/inmueble.model';
 
 @Component({
   selector: 'app-listar-inmueble',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-inmueble.component.css']
 })
 export class ListarInmuebleComponent implements OnInit {
+
+listainmuebles: inmuebleModel[] = [];
 
   constructor() { }
 
