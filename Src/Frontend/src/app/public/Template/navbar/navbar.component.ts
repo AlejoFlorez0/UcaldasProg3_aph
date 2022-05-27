@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { datasessionModel } from 'src/app/modelos/data-session.mode';
+import { datasessionModel } from 'src/app/modelos/seguridad/data-session.mode';
 import { SeguridadService } from 'src/app/servicios/compartir/seguridad.service';
 
 @Component({

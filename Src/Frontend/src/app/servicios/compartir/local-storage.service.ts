@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { datasessionModel } from 'src/app/modelos/data-session.mode';
+import { datasessionModel } from 'src/app/modelos/seguridad/data-session.mode';
 
 @Injectable({
   providedIn: 'root'

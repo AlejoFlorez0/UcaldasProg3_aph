@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { datasessionModel } from 'src/app/modelos/data-session.mode';
+import { datasessionModel } from 'src/app/modelos/seguridad/data-session.mode';
 import { ConfiguracionInformacion } from '../../Config/ConfifurationData';
-import { credencialesUsuarioModel } from '../../modelos/usuario-credenciales.model';
+import { credencialesUsuarioModel } from '../../modelos/seguridad/usuario-credenciales.model';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({

@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfiguracionInformacion } from 'src/app/Config/ConfifurationData';
-import { datasessionModel } from 'src/app/modelos/data-session.mode';
-import { credencialesUsuarioModel } from 'src/app/modelos/usuario-credenciales.model';
+import { datasessionModel } from 'src/app/modelos/seguridad/data-session.mode';
+import { credencialesUsuarioModel } from 'src/app/modelos/seguridad/usuario-credenciales.model';
 import { LocalStorageService } from 'src/app/servicios/compartir/local-storage.service';
 import { SeguridadService } from 'src/app/servicios/compartir/seguridad.service';
 
