@@ -20,28 +20,18 @@ br />
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let r of recordList | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: totalAmount }">
-                <td>
+       <tbody>
+           <tr *ngFor="let r of tipos">
+               <td>
                     {{r.id}}
-                </td>
-                <td>
+               </td>
+               <td>
                     {{r.nombre}}
-                </td>
-                <td>
-                    {{r.descripción}}
-                </td>
-                <td>
-                    <a routerLink="/parametros/editar-tipo/{{r.id}}" class="btn btn-warning orange">Editar</a>&nbsp;
-                    <a routerLink="/parameters/remover-tipo/{{r.id}}" class="btn btn-warning red">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
-                    nextLabel="Siguiente"></pagination-controls>
-                </td>
-            </tr>
-        </tbody>
+               </td>
+               <td>
+                    {{r.descripcion}}
+               </td>
+           </tr>
+       </tbody>
     </table>
 </fieldset>
