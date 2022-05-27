@@ -11,6 +11,10 @@ import { EditorComponent } from './Usuarios/editor/editor.component';
 import { ListarComponent } from './Usuarios/listar/listar.component';
 import { EliminarComponent } from './Usuarios/eliminar/eliminar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearRolComponent } from './Rol/crear-rol/crear-rol.component';
+import { RemoverRolComponent } from './Rol/remover-rol/remover-rol.component';
+import { EditarRolComponent } from './Rol/editar-rol/editar-rol.component';
+import { ListarRolComponent } from './Rol/listar-rol/listar-rol.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CrearComponent,
     EditorComponent,
     ListarComponent,
-    EliminarComponent
+    EliminarComponent,
+    CrearRolComponent,
+    RemoverRolComponent,
+    EditarRolComponent,
+    ListarRolComponent
   ],
   imports: [
     CommonModule,
