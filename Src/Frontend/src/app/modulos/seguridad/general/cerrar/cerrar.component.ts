@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { datasessionModel } from 'src/app/modelos/data-session.mode';
+import { LocalStorageService } from 'src/app/servicios/compartir/local-storage.service';
+import { SeguridadService } from 'src/app/servicios/compartir/seguridad.service';
 
 @Component({
   selector: 'app-cerrar',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CerrarComponent implements OnInit {
 
-  constructor() { }
+  constructor(  private localstroageService:LocalStorageService,
+    private securityservice:SeguridadService,
+    private router:Router
+    ) {
+   }
 
   ngOnInit(): void {
+      this.localstroageService.RemoverSesion()
+      this.securityservice.recargarsesion(new datasessionModel());
+      this.router.navigate(["/home"])
   }
 
 }

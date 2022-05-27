@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { inmuebleModel } from 'src/app/modelos/parametros/inmueble.model';
 
 @Component({
   selector: 'app-listar-inmueble',
@@ -8,7 +7,6 @@ import { inmuebleModel } from 'src/app/modelos/parametros/inmueble.model';
 })
 export class ListarInmuebleComponent implements OnInit {
 
-listainmuebles: inmuebleModel[] = [];
 
   constructor() { }
 

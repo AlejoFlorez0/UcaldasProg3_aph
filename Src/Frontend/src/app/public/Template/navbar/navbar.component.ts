@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { datasessionModel } from 'src/app/modelos/data-session.mode';
+import { SeguridadService } from 'src/app/servicios/compartir/seguridad.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   SesionAbierta : boolean = false;
-
-  constructor() { }
+  subscription: Subscription = new Subscription();
+  constructor(private securityServices: SeguridadService) {
+   }
 
   ngOnInit(): void {
+    this.subscription = this.securityServices.obtenerinformacionsesion().subscribe();
+    next: (data: datasessionModel) => {
+      this.SesionAbierta = data.EstaIniciado;
+    }
+    error:(err: any)=>{
+
+    }
   }
 
 }

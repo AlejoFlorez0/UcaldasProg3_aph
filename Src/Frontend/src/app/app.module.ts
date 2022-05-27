@@ -9,6 +9,7 @@ import { FooterComponent } from './public/Template/footer/footer.component';
 import { NotFoundComponent } from './public/Errors/not-found/not-found.component';
 import { InternalServerComponent } from './public/Errors/internal-server/internal-server.component';
 import { PrincipalComponent } from './public/general/principal/principal.component';
+import { HttpClientModule} from  '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PrincipalComponent } from './public/general/principal/principal.compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
