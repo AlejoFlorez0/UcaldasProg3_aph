@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfiguracionInformacion } from 'src/app/Config/ConfifurationData';
+import { rolModel } from 'src/app/modelos/seguridad/rol.model';
 import { RolService } from 'src/app/servicios/Seguridad/rol.service';
 
 declare const MostrarMensaje:any;
@@ -34,7 +36,15 @@ export class CrearRolComponent implements OnInit {
     return this.dataForm.controls;
   }
   guardarDatos(){
-
+    let model = new rolModel();
+    model.nombre = this.getDF["name"].value
+    model.descripcion= this.getDF["descripcion"].value
+    this.servicio.GuardarListaRoles(model).subscribe({
+      next: (data: rolModel) =>{
+        MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_GUARDADO)
+        this.router.navigate(["/seguridad/crear-rol"])
+      }
+    })
   }
 
 }

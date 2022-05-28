@@ -16,7 +16,8 @@ url:string = ConfiguracionInformacion.SEGURIDAD_URL;
 
   constructor(private http:HttpClient,
     private loalstorage:LocalStorageService) {
-   }
+      this.verificarsesion()
+    }
 
    verificarsesion():boolean{
     let info = this.loalstorage.ObtenerInformacionSesion();
