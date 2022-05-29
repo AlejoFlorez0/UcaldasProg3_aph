@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -17,14 +18,17 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import { Tususuario } from '../models';
+import { PasswordChangeCredentials, Tususuario } from '../models';
 import { Credentials } from '../models';
 import { TususuarioRepository } from '../repositories';
+import { PasswordManagerService } from '../services';
 
 export class TususuarioController {
   constructor(
     @repository(TususuarioRepository)
     public tususuarioRepository: TususuarioRepository,
+    @service(PasswordManagerService)
+    public passwordManager: PasswordManagerService,
   ) { }
 
   @post('/tususuarios')
@@ -38,13 +42,14 @@ export class TususuarioController {
         'application/json': {
           schema: getModelSchemaRef(Tususuario, {
             title: 'NewTususuario',
-
           }),
         },
       },
     })
     tususuario: Tususuario,
   ): Promise<Tususuario> {
+
+    tususuario.password = this.passwordManager.generateEncryptText(this.passwordManager.generateRandomPassword());
     return this.tususuarioRepository.create(tususuario);
   }
 
@@ -149,6 +154,11 @@ export class TususuarioController {
     await this.tususuarioRepository.deleteById(id);
   }
 
+  /**
+   * Obtendrá los datos de un cliente a base de su correo y contraseña
+   * @param credentials 
+   * @returns 
+   */
   @post('/tususuarios/recognize')
   @response(200, {
   })
@@ -164,4 +174,61 @@ export class TususuarioController {
 
     return user;
   }
+
+  /**
+   * Recuperar una contraseña
+   * @param credentials 
+   * @returns 
+   */
+  @post('/tususuarios/restorePassword')
+  @response(200, {
+    description: "Recuperación de contraseña"
+  })
+  async restorePassword(
+    @requestBody() credentials: Credentials
+  ): Promise<boolean> {
+
+    let user = await this.tususuarioRepository.findOne({
+      where: {
+        email: credentials.email
+      }
+    });
+
+    if (user) {
+      user.password = this.passwordManager.generateEncryptText(this.passwordManager.generateRandomPassword());
+      await this.tususuarioRepository.replaceById(user.nroDocumento, user);
+      return true;
+    }
+
+    return true;
+  }
+
+  /**
+   * Cambio de contraseña
+   * @param credentials 
+   * @returns 
+   */
+  @post('/tususuarios/changePassword')
+  @response(200, {
+    description: "Cambio de contraseña"
+  })
+  async changePassword(
+    @requestBody() credentials: PasswordChangeCredentials): Promise<boolean> {
+
+    let user = await this.tususuarioRepository.findById(credentials.nroDocumento);
+
+    if (user) {
+      if (user.password == credentials.currentPassword) {
+        user.password = this.passwordManager.generateEncryptText(credentials.newPassword);
+        await this.tususuarioRepository.replaceById(credentials.nroDocumento, user);
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
 }

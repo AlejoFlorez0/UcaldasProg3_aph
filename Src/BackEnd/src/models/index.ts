@@ -15,3 +15,4 @@ export * from './tgeparametros.model';
 export * from './tususuario.model';
 
 export * from './credentials.model';
+export * from './password-change-credentials.model';
