@@ -12,3 +12,7 @@ export * from './tfaccreditoinmuebles.model';
 export * from './tadmmulta.model';
 export * from './tadmmultausuario.model';
 export * from './tgeparametros.model';
+export * from './tususuario.model';
+
+export * from './credentials.model';
+export * from './password-change-credentials.model';
