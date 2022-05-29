@@ -21,6 +21,10 @@ export class RolService {
        return this.http.get<rolModel[]>(`${this.url}/tusrols`);
      }
 
+     EditarListaRoles(id: number):Observable<rolModel>{
+      return this.http.get<rolModel>(`${this.url}/tusrols/${id}`);
+    }
+
      GuardarListaRoles(info: rolModel): Observable<rolModel>{
       return this.http.post<rolModel>(`${this.url}/tusrols`,{
         nombre: info.nombre,
