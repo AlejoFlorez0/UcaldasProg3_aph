@@ -30,7 +30,7 @@ export class sessionManagerService {
 
   async createToken(user: Tususuario): Promise<string> {
 
-    let urlCreateToken = "http://localhost:5001/createToken?name=" + user.primerNombre + "&nroDocument=" + user.nroDocumento + "&rolId=1";
+    let urlCreateToken = "http://localhost:5001/createToken?name=" + user.primerNombre + "&nroDocument=" + user.nroDocumento + "&rolId=" + user.rolId;
     let _token = "";
 
     const response = await fetch(urlCreateToken);

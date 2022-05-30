@@ -1,16 +1,25 @@
-import {BootMixin} from '@loopback/boot';
-import {ApplicationConfig} from '@loopback/core';
+import { BootMixin } from '@loopback/boot';
+import { ApplicationConfig } from '@loopback/core';
 import {
   RestExplorerBindings,
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
-import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
-import {ServiceMixin} from '@loopback/service-proxy';
-import path from 'path';
-import {MySequence} from './sequence';
+import { RepositoryMixin } from '@loopback/repository';
+import { RestApplication } from '@loopback/rest';
+import { ServiceMixin } from '@loopback/service-proxy';
+import { AuthenticationComponent, registerAuthenticationStrategy } from '@loopback/authentication';
 
-export {ApplicationConfig};
+import path from 'path';
+import { MySequence } from './sequence';
+import { administratorStrategy } from './strategies/administrator';
+import { ownerStrategy } from './strategies/owner';
+import { accountantStrategy } from './strategies/accountant';
+import { auditorStrategy } from './strategies/auditor';
+import { watchmenStrategy } from './strategies/watchmen';
+import { residentsStrategy } from './strategies/residents';
+import { housekeeperStrategy } from './strategies/housekeeper';
+
+export { ApplicationConfig };
 
 export class App extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -40,5 +49,17 @@ export class App extends BootMixin(
         nested: true,
       },
     };
+
+    // Mount authentication system
+    registerAuthenticationStrategy(this, administratorStrategy);
+    registerAuthenticationStrategy(this, ownerStrategy);
+    registerAuthenticationStrategy(this, accountantStrategy);
+    registerAuthenticationStrategy(this, auditorStrategy);
+    registerAuthenticationStrategy(this, watchmenStrategy);
+    registerAuthenticationStrategy(this, residentsStrategy);
+    registerAuthenticationStrategy(this, housekeeperStrategy);
+
+    this.component(AuthenticationComponent);
+
   }
 }

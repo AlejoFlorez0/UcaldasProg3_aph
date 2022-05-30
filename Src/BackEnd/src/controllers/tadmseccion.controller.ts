@@ -17,19 +17,22 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Tadmseccion} from '../models';
-import {TadmseccionRepository} from '../repositories';
+import { Tadmseccion } from '../models';
+import { TadmseccionRepository } from '../repositories';
+import { authenticate } from '@loopback/authentication';
+
 
 export class TadmseccionController {
   constructor(
     @repository(TadmseccionRepository)
-    public tadmseccionRepository : TadmseccionRepository,
-  ) {}
+    public tadmseccionRepository: TadmseccionRepository,
+  ) { }
 
+  @authenticate('Administrator', 'Auditor')
   @post('/tadmseccions')
   @response(200, {
     description: 'Tadmseccion model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Tadmseccion)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Tadmseccion) } },
   })
   async create(
     @requestBody({
@@ -47,10 +50,11 @@ export class TadmseccionController {
     return this.tadmseccionRepository.create(tadmseccion);
   }
 
+  @authenticate.skip()
   @get('/tadmseccions/count')
   @response(200, {
     description: 'Tadmseccion model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Tadmseccion) where?: Where<Tadmseccion>,
@@ -65,7 +69,7 @@ export class TadmseccionController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tadmseccion, {includeRelations: true}),
+          items: getModelSchemaRef(Tadmseccion, { includeRelations: true }),
         },
       },
     },
@@ -79,13 +83,13 @@ export class TadmseccionController {
   @patch('/tadmseccions')
   @response(200, {
     description: 'Tadmseccion PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmseccion, {partial: true}),
+          schema: getModelSchemaRef(Tadmseccion, { partial: true }),
         },
       },
     })
@@ -100,13 +104,13 @@ export class TadmseccionController {
     description: 'Tadmseccion model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tadmseccion, {includeRelations: true}),
+        schema: getModelSchemaRef(Tadmseccion, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tadmseccion, {exclude: 'where'}) filter?: FilterExcludingWhere<Tadmseccion>
+    @param.filter(Tadmseccion, { exclude: 'where' }) filter?: FilterExcludingWhere<Tadmseccion>
   ): Promise<Tadmseccion> {
     return this.tadmseccionRepository.findById(id, filter);
   }
@@ -120,7 +124,7 @@ export class TadmseccionController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmseccion, {partial: true}),
+          schema: getModelSchemaRef(Tadmseccion, { partial: true }),
         },
       },
     })

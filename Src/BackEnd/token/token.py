@@ -31,13 +31,20 @@ def createToken():
 
 @app.route("/validateToken")
 def validateToken():
-    secretKey = os.environ.get("JWT_SECRET_KEY");
     token = request.args.get('token');
+    _rolId = request.args.get('rolId');
+    
     try:
-        jwt.decode(token, secretKey, algorithms=['HS256'])
-        return True
+        secretKey = os.environ.get("JWT_SECRET_KEY");
+        token = jwt.decode(token, secretKey, algorithms=['HS256'])
+        
+        if token["rolId"] == _rolId:
+            return "True"
+        else:
+            return "False"
+        
     except Exception as e:
-        return False
+        return "False"
 
 if __name__ == '__main__':
     app.run(host='localhost',port=5001)
