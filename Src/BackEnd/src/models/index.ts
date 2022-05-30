@@ -1,6 +1,5 @@
 export * from './tususuario.model';
 export * from './tusrol.model';
-export * from './tususuariorol.model';
 export * from './tadmzonasocial.model';
 export * from './tadmzonasocialusuario.model';
 export * from './tadminmueble.model';

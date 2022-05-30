@@ -1,11 +1,10 @@
-import { Entity, model, property, hasMany } from '@loopback/repository';
-import { Tusrol } from './tusrol.model';
-import { Tususuariorol } from './tususuariorol.model';
+import { Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
 import { Tadmzonasocial } from './tadmzonasocial.model';
 import { Tadmzonasocialusuario } from './tadmzonasocialusuario.model';
 import { Tadmmulta } from './tadmmulta.model';
 import { Tadmmultausuario } from './tadmmultausuario.model';
 import { Tadminmueble } from './tadminmueble.model';
+import {Tusrol} from './tusrol.model';
 
 @model()
 export class Tususuario extends Entity {
@@ -59,20 +58,20 @@ export class Tususuario extends Entity {
   })
   celular: string;
 
-  @hasMany(() => Tusrol, { through: { model: () => Tususuariorol, keyFrom: 'nroDocumento', keyTo: 'idRol' } })
-  usuariosXrol: Tusrol[];
-
-  @hasMany(() => Tadmzonasocial, { through: { model: () => Tadmzonasocialusuario, keyFrom: 'nroDocumento', keyTo: 'idZonaSocial' } })
+  @hasMany(() => Tadmzonasocial, {through: {model: () => Tadmzonasocialusuario, keyFrom: 'nroDocumento', keyTo: 'idZonaSocial'}})
   usuarioXzonasocial: Tadmzonasocial[];
 
-  @hasMany(() => Tadmmulta, { through: { model: () => Tadmmultausuario, keyFrom: 'nroDocumento', keyTo: 'idMulta' } })
+  @hasMany(() => Tadmmulta, {through: {model: () => Tadmmultausuario, keyFrom: 'nroDocumento', keyTo: 'idMulta'}})
   usuarioXidmulta: Tadmmulta[];
 
-  @hasMany(() => Tadminmueble, { keyTo: 'nroDocumentoPropietario' })
+  @hasMany(() => Tadminmueble, {keyTo: 'nroDocumentoPropietario'})
   fk_tadm_inmueble_nroDocumentoPropietario: Tadminmueble[];
 
-  @hasMany(() => Tadminmueble, { keyTo: 'nroDocumentoHabitante' })
+  @hasMany(() => Tadminmueble, {keyTo: 'nroDocumentoHabitante'})
   fk_tadm_inmueble_nroDocumentoHabitante: Tadminmueble[];
+
+  @belongsTo(() => Tusrol, {name: 'fk_tusrol_rolid'})
+  rolId: number;
 
   constructor(data?: Partial<Tususuario>) {
     super(data);
