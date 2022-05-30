@@ -21,7 +21,7 @@ import {
 import { PasswordChangeCredentials, Tususuario } from '../models';
 import { Credentials } from '../models';
 import { TususuarioRepository } from '../repositories';
-import { PasswordManagerService } from '../services';
+import { PasswordManagerService, sessionManagerService } from '../services';
 
 export class TususuarioController {
   constructor(
@@ -29,6 +29,8 @@ export class TususuarioController {
     public tususuarioRepository: TususuarioRepository,
     @service(PasswordManagerService)
     public passwordManager: PasswordManagerService,
+    @service(sessionManagerService)
+    public sessionManager: sessionManagerService,
   ) { }
 
   @post('/tususuarios')
@@ -165,14 +167,19 @@ export class TususuarioController {
   async recognize(
     @requestBody() credentials: Credentials): Promise<object | null> {
 
-    let user = await this.tususuarioRepository.findOne({
-      where: {
-        email: credentials.email,
-        password: credentials.password
-      }
-    });
+    let user = await this.sessionManager.credentialsValidator(credentials);
+    let token = "";
 
-    return user;
+    if (user) {
+
+      user.password = "";
+      token = await this.sessionManager.createToken(user);
+    }
+
+    return {
+      tk: token,
+      user: user
+    };
   }
 
   /**
