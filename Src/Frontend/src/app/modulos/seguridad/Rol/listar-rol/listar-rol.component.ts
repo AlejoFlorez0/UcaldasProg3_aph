@@ -9,19 +9,24 @@ import { RolService } from 'src/app/servicios/Seguridad/rol.service';
 })
 export class ListarRolComponent implements OnInit {
 
-  listaRoles : rolModel[]=[];
+  listaRoles: rolModel[] = [
+    {
+      id: 1,
+      nombre: "A",
+      descripcion: "A"
+    }];
 
   constructor(
-      private servicio: RolService
-    ) {}
+    private servicio: RolService
+  ) { }
 
   ngOnInit(): void {
-    this.ObtenerRoles();
+    //this.ObtenerRoles();
   }
 
-  ObtenerRoles(){
+  ObtenerRoles() {
     this.servicio.ObtenerListaRoles().subscribe({
-      next:(datos: rolModel[])=>{
+      next: (datos: rolModel[]) => {
         this.listaRoles = datos
       }
     });

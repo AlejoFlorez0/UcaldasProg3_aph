@@ -11,38 +11,38 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class SeguridadService {
 
-informacionSesionPersona : BehaviorSubject<datasessionModel> = new BehaviorSubject<datasessionModel>(new datasessionModel());
-url:string = ConfiguracionInformacion.SEGURIDAD_URL;
+  informacionSesionPersona: BehaviorSubject<datasessionModel> = new BehaviorSubject<datasessionModel>(new datasessionModel());
+  url: string = ConfiguracionInformacion.SEGURIDAD_URL;
 
-  constructor(private http:HttpClient,
-    private loalstorage:LocalStorageService) {
-      this.verificarsesion()
-    }
+  constructor(private http: HttpClient,
+    private loalstorage: LocalStorageService) {
+    this.verificarsesion()
+  }
 
-   verificarsesion():boolean{
+  verificarsesion(): boolean {
     let info = this.loalstorage.ObtenerInformacionSesion();
-    if(info.tk){
-        info.EstaIniciado= true;
-        this.recargarsesion(info)
-        return false;
-    }else{
+    if (info.tk) {
+      info.EstaIniciado = true;
+      this.recargarsesion(info)
+      return false;
+    } else {
       return true
     }
-   }
+  }
 
-   recargarsesion(data: datasessionModel){
+  recargarsesion(data: datasessionModel) {
     this.informacionSesionPersona.next(data);
-   }
+  }
 
-   obtenerinformacionsesion(){
-     return this.informacionSesionPersona.asObservable();
-   }
+  obtenerinformacionsesion() {
+    return this.informacionSesionPersona.asObservable();
+  }
 
-   /*Falta cambiar la direccion  y el nombre de los datos con recpecto a la seguridad aun no creada*/
-  login(data: credencialesUsuarioModel):Observable<datasessionModel>{
-    return this.http.post<datasessionModel>(`${this.url}/identificar-usuario`,{
-      usuario: data.usuario,
-      contraseña:data.contraseña
+  /*Falta cambiar la direccion  y el nombre de los datos con recpecto a la seguridad aun no creada*/
+  login(data: credencialesUsuarioModel): Observable<datasessionModel> {
+    return this.http.post<datasessionModel>(`${this.url}/tususuarios/recognize`, {
+      email: data.usuario,
+      password: data.contraseña
     })
   }
 }

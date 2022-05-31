@@ -9,33 +9,33 @@ import { LocalStorageService } from '../compartir/local-storage.service';
   providedIn: 'root'
 })
 export class RolService {
-  url:string = ConfiguracionInformacion.GENERAL_URL;
-  tk:string = "";
+  url: string = ConfiguracionInformacion.GENERAL_URL;
+  tk: string = "";
 
-    constructor(private http:HttpClient,
-      private localStorageService: LocalStorageService) {
-        this.tk = this.localStorageService.ObtenerToker();
-      }
+  constructor(private http: HttpClient,
+    private localStorageService: LocalStorageService) {
+    this.tk = this.localStorageService.ObtenerToker();
+  }
 
-     ObtenerListaRoles():Observable<rolModel[]>{
-       return this.http.get<rolModel[]>(`${this.url}/tusrols`);
-     }
+  ObtenerListaRoles(): Observable<rolModel[]> {
+    return this.http.get<rolModel[]>(`${this.url}/tusrols`);
+  }
 
-     EditarListaRoles(id: number):Observable<rolModel>{
-      return this.http.get<rolModel>(`${this.url}/tusrols/${id}`);
+  EditarListaRoles(id: number): Observable<rolModel> {
+    return this.http.get<rolModel>(`${this.url}/tusrols/${id}`);
+  }
+
+  GuardarListaRoles(info: rolModel): Observable<rolModel> {
+    return this.http.post<rolModel>(`${this.url}/tusrols`, {
+      nombre: info.nombre,
+      descripcion: info.descripcion
+    }, {
+      headers: new HttpHeaders(
+        {
+          Authorizacion: `Bearer ${this.tk}`
+        }
+      )
     }
-
-     GuardarListaRoles(info: rolModel): Observable<rolModel>{
-      return this.http.post<rolModel>(`${this.url}/tusrols`,{
-        nombre: info.nombre,
-        descripcion: info.descripcion
-      },{
-        headers: new HttpHeaders(
-          {
-            Authorizacion: `Bearer ${this.tk}`
-          }
-        )
-      }
-      );
-    }
+    );
+  }
 }
