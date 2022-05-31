@@ -1,11 +1,9 @@
 
 export * from './tadminmueble-tadmtipoinmueble.controller';
-export * from './tadminmueble-tususuario.controller';
 export * from './tfaccreditoinmuebles-tadminmueble.controller';
 export * from './tfacdebitoinmuebles-tadminmueble.controller';
 export * from './tadminmueblesadicionales-tadminmueble.controller';
 export * from './tadminmueble-tadmseccion.controller';
-export * from './tususuario-tusrol.controller';
 export * from './tususuario-tadmzonasocial.controller';
 export * from './tususuario-tadmmulta.controller';
 export * from './tadmseccion-tadminmueble.controller';
@@ -25,3 +23,4 @@ export * from './tfacdebitoinmuebles.controller';
 export * from './tgeparametros.controller';
 export * from './tusrol.controller';
 export * from './tususuario.controller';
+export * from './tususuario-tusrol.controller';
