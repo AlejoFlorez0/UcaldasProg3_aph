@@ -16,13 +16,15 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.subscription = this.securityServices.obtenerinformacionsesion().subscribe();
-    next: (data: datasessionModel) => {
-      this.SesionAbierta = data.EstaIniciado;
-    }
-    error:(err: any)=>{
-
-    }
+    this.subscription = this.securityServices.obtenerinformacionsesion().subscribe({
+      next: (data: datasessionModel) => {
+        this.SesionAbierta = data.EstaIniciado;
+      },
+      error:(err: any)=>{
+  
+      }
+    });
+    
   }
 
 }

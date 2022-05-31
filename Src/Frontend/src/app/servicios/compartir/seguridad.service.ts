@@ -24,9 +24,9 @@ export class SeguridadService {
     if (info.tk) {
       info.EstaIniciado = true;
       this.recargarsesion(info)
-      return false;
+      return true;
     } else {
-      return true
+      return false
     }
   }
 
