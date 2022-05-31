@@ -7,7 +7,7 @@ import { datasessionModel } from 'src/app/modelos/seguridad/data-session.mode';
 import { credencialesUsuarioModel } from 'src/app/modelos/seguridad/usuario-credenciales.model';
 import { LocalStorageService } from 'src/app/servicios/compartir/local-storage.service';
 import { SeguridadService } from 'src/app/servicios/compartir/seguridad.service';
-
+import { MD5 } from 'crypto-js';
 declare const MostrarMensaje: any;
 
 @Component({
@@ -44,7 +44,7 @@ export class InicioComponent implements OnInit {
     } else {
       let credenciales = new credencialesUsuarioModel();
       credenciales.usuario = this.getDF["usuario"].value;
-      credenciales.contraseña = this.getDF["contraseña"].value;
+      credenciales.contraseña = MD5(this.getDF["contraseña"].value).toString();
       /*en el video dicen que en la version actual esto causa error
       pero al corregirlo me causa error de isntaxis video 38-m */
       this.securityservice.login(credenciales).subscribe((data: datasessionModel) => {
@@ -52,7 +52,7 @@ export class InicioComponent implements OnInit {
         let saved = this.localStorageService.Guardarsesion(data);
         data.EstaIniciado = true;
         this.securityservice.recargarsesion(data);
-        this.router.navigate(["/home"])
+        this.router.navigate(["/principal"])
       }, (error: any) => { });
     }
   }
