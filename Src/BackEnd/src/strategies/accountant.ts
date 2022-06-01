@@ -22,7 +22,7 @@ export class accountantStrategy implements AuthenticationStrategy {
         if (_token) {
 
             let rol_admin = 3;
-            let urlCreateToken = "http://localhost:5001/validateToken?token=" + _token + "&rolId=" + rol_admin;
+            let urlCreateToken = "http://localhost:5000/validateToken?token=" + _token + "&rolId=" + rol_admin;
 
             const response = await fetch(urlCreateToken);
             _validator = await response.text();

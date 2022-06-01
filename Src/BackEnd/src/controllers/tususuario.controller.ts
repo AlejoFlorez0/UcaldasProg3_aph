@@ -1,5 +1,5 @@
-import {authenticate} from '@loopback/authentication';
-import {service} from '@loopback/core';
+import { authenticate } from '@loopback/authentication';
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -13,9 +13,9 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Credentials, PasswordChangeCredentials, Tususuario} from '../models';
-import {TususuarioRepository} from '../repositories';
-import {PasswordManagerService, sessionManagerService} from '../services';
+import { Credentials, PasswordChangeCredentials, Tususuario, Notification } from '../models';
+import { TususuarioRepository } from '../repositories';
+import { PasswordManagerService, sessionManagerService, NotificationsService } from '../services';
 
 @authenticate('Administrator')
 export class TususuarioController {
@@ -26,12 +26,14 @@ export class TususuarioController {
     public passwordManager: PasswordManagerService,
     @service(sessionManagerService)
     public sessionManager: sessionManagerService,
+    @service(NotificationsService)
+    public notificationsService: NotificationsService,
   ) { }
 
   @post('/tususuarios')
   @response(200, {
     description: 'Tususuario model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Tususuario)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Tususuario) } },
   })
   async create(
     @requestBody({
@@ -46,14 +48,26 @@ export class TususuarioController {
     tususuario: Tususuario,
   ): Promise<Tususuario> {
 
-    tususuario.password = this.passwordManager.generateEncryptText(tususuario.password);
+    let passwordRandom = this.passwordManager.generateRandomPassword();
+    tususuario.password = this.passwordManager.generateEncryptText(passwordRandom);
+    let notification = new Notification();
+    notification.Addressee = tususuario.email;
+    notification.Subject = "Registro Éxitoso";
+    notification.Message = "Hola " + tususuario.primerNombre + "<br />" +
+      "La clave de acceso que ha sido asignada es " + passwordRandom;
+
+    this.notificationsService.sendEmail(notification);
+
+    notification.Addressee = "57" + tususuario.celular;
+    this.notificationsService.sendSMS(notification);
+
     return this.tususuarioRepository.create(tususuario);
   }
 
   @get('/tususuarios/count')
   @response(200, {
     description: 'Tususuario model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Tususuario) where?: Where<Tususuario>,
@@ -68,7 +82,7 @@ export class TususuarioController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tususuario, {includeRelations: true}),
+          items: getModelSchemaRef(Tususuario, { includeRelations: true }),
         },
       },
     },
@@ -82,13 +96,13 @@ export class TususuarioController {
   @patch('/tususuarios')
   @response(200, {
     description: 'Tususuario PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, {partial: true}),
+          schema: getModelSchemaRef(Tususuario, { partial: true }),
         },
       },
     })
@@ -104,13 +118,13 @@ export class TususuarioController {
     description: 'Tususuario model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tususuario, {includeRelations: true}),
+        schema: getModelSchemaRef(Tususuario, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tususuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Tususuario>
+    @param.filter(Tususuario, { exclude: 'where' }) filter?: FilterExcludingWhere<Tususuario>
   ): Promise<Tususuario> {
     return this.tususuarioRepository.findById(id, filter);
   }
@@ -124,7 +138,7 @@ export class TususuarioController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, {partial: true}),
+          schema: getModelSchemaRef(Tususuario, { partial: true }),
         },
       },
     })
@@ -226,7 +240,19 @@ export class TususuarioController {
     if (user) {
       if (user.password == credentials.currentPassword) {
         user.password = this.passwordManager.generateEncryptText(credentials.newPassword);
-        await this.tususuarioRepository.replaceById(credentials.nroDocumento, user);
+        await this.tususuarioRepository.updateById(credentials.nroDocumento, user);
+
+        let notification = new Notification();
+        notification.Addressee = user.email;
+        notification.Subject = "Cambio de contraseña";
+        notification.Message = "Hola Usuario<br/>" +
+          "Se ha modificado su contraseña en el sistema";
+
+        this.notificationsService.sendEmail(notification);
+
+        notification.Addressee = "57" + user.celular;
+        this.notificationsService.sendSMS(notification);
+
         return true;
       }
       else {

@@ -17,8 +17,6 @@ export class PasswordManagerService {
       numbers: true
     });
 
-    console.log(randomPassword);
-
     return randomPassword;
   }
 

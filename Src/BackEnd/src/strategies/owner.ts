@@ -22,7 +22,7 @@ export class ownerStrategy implements AuthenticationStrategy {
         if (_token) {
 
             let rol_owner = 2;
-            let urlCreateToken = "http://localhost:5001/validateToken?token=" + _token + "&rolId=" + rol_owner;
+            let urlCreateToken = "http://localhost:5000/validateToken?token=" + _token + "&rolId=" + rol_owner;
 
             const response = await fetch(urlCreateToken);
             _validator = await response.text();
