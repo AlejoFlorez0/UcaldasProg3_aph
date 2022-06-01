@@ -48,7 +48,7 @@ const routes: Routes = [
     path:"listar-rol",
     component:ListarRolComponent
   },{
-    path:"remover-rol",
+    path:"remover-rol/:id",
     component:RemoverRolComponent
   }
 ];

@@ -45,4 +45,14 @@ export class RolService {
     }
     );
   }
+
+  EliminarRol(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/tusrols/${id}`, {
+      headers: new HttpHeaders(
+        {
+          Authorizacion: `Bearer ${this.tk}`
+        }
+      )
+    });
+  }
 }

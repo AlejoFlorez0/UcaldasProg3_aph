@@ -1,1 +1,27 @@
-<p>remover-rol works!</p>
+<div class="row">
+    <div class="row">
+        <div class="input-field col s12">
+
+            <strong>¿Desea eliminar la siguiente información?</strong>
+            <br />
+            <ul>
+                <li>
+                    id: {{idRol}}
+                </li>
+                <li>
+                    nombre: {{name}}
+                </li>
+                <li>
+                    descripcion: {{description}}
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <button type="button" class="btn btn-success" (click)="EliminarDatos()">Eliminar</button>
+            &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar-rol">Cancelar</a>
+        </div>
+    </div>
+</div>
