@@ -43,7 +43,7 @@ export class EditarRolComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.servicio.EditarListaRoles(id).subscribe({
       next: (data: rolModel) => {
-        this.getDF["id"].setValue(data.id);
+        this.getDF["id"].setValue(data.idRol);
         this.getDF["name"].setValue(data.nombre);
       }
     });
@@ -52,7 +52,7 @@ export class EditarRolComponent implements OnInit {
   guardarDatos(){
     let model = new rolModel();
     model.nombre = this.getDF["name"].value
-    model.id= this.getDF["id"].value
+    model.idRol= this.getDF["id"].value
     this.servicio.GuardarListaRoles(model).subscribe({
       next: (data: rolModel) =>{
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_ACTUALIZADO)

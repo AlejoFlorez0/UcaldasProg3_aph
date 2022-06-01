@@ -11,7 +11,7 @@ export class ListarRolComponent implements OnInit {
 
   listaRoles: rolModel[] = [
     {
-      id: 1,
+      idRol: 1,
       nombre: "A",
       descripcion: "A"
     }];
@@ -21,7 +21,7 @@ export class ListarRolComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.ObtenerRoles();
+    this.ObtenerRoles();
   }
 
   ObtenerRoles() {
