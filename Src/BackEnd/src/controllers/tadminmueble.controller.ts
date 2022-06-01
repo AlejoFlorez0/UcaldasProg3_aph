@@ -17,19 +17,21 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Tadminmueble} from '../models';
-import {TadminmuebleRepository} from '../repositories';
+import { Tadminmueble } from '../models';
+import { TadminmuebleRepository } from '../repositories';
+import { authenticate } from '@loopback/authentication';
 
 export class TadminmuebleController {
   constructor(
     @repository(TadminmuebleRepository)
-    public tadminmuebleRepository : TadminmuebleRepository,
-  ) {}
+    public tadminmuebleRepository: TadminmuebleRepository,
+  ) { }
 
+  @authenticate('Administrator', 'Owner')
   @post('/tadminmuebles')
   @response(200, {
     description: 'Tadminmueble model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Tadminmueble)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Tadminmueble) } },
   })
   async create(
     @requestBody({
@@ -50,7 +52,7 @@ export class TadminmuebleController {
   @get('/tadminmuebles/count')
   @response(200, {
     description: 'Tadminmueble model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Tadminmueble) where?: Where<Tadminmueble>,
@@ -58,6 +60,7 @@ export class TadminmuebleController {
     return this.tadminmuebleRepository.count(where);
   }
 
+  @authenticate('Administrator', 'Owner', 'Auditor', 'Watchmen')
   @get('/tadminmuebles')
   @response(200, {
     description: 'Array of Tadminmueble model instances',
@@ -65,7 +68,7 @@ export class TadminmuebleController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tadminmueble, {includeRelations: true}),
+          items: getModelSchemaRef(Tadminmueble, { includeRelations: true }),
         },
       },
     },
@@ -76,16 +79,17 @@ export class TadminmuebleController {
     return this.tadminmuebleRepository.find(filter);
   }
 
+  @authenticate('Administrator', 'Owner')
   @patch('/tadminmuebles')
   @response(200, {
     description: 'Tadminmueble PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadminmueble, {partial: true}),
+          schema: getModelSchemaRef(Tadminmueble, { partial: true }),
         },
       },
     })
@@ -95,22 +99,24 @@ export class TadminmuebleController {
     return this.tadminmuebleRepository.updateAll(tadminmueble, where);
   }
 
+  @authenticate('Administrator', 'Owner', 'Watchmen')
   @get('/tadminmuebles/{id}')
   @response(200, {
     description: 'Tadminmueble model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tadminmueble, {includeRelations: true}),
+        schema: getModelSchemaRef(Tadminmueble, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tadminmueble, {exclude: 'where'}) filter?: FilterExcludingWhere<Tadminmueble>
+    @param.filter(Tadminmueble, { exclude: 'where' }) filter?: FilterExcludingWhere<Tadminmueble>
   ): Promise<Tadminmueble> {
     return this.tadminmuebleRepository.findById(id, filter);
   }
 
+  @authenticate('Administrator', 'Owner')
   @patch('/tadminmuebles/{id}')
   @response(204, {
     description: 'Tadminmueble PATCH success',
@@ -120,7 +126,7 @@ export class TadminmuebleController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadminmueble, {partial: true}),
+          schema: getModelSchemaRef(Tadminmueble, { partial: true }),
         },
       },
     })
@@ -129,6 +135,7 @@ export class TadminmuebleController {
     await this.tadminmuebleRepository.updateById(id, tadminmueble);
   }
 
+  @authenticate('Administrator', 'Owner')
   @put('/tadminmuebles/{id}')
   @response(204, {
     description: 'Tadminmueble PUT success',
@@ -140,6 +147,7 @@ export class TadminmuebleController {
     await this.tadminmuebleRepository.replaceById(id, tadminmueble);
   }
 
+  @authenticate('Administrator', 'Owner')
   @del('/tadminmuebles/{id}')
   @response(204, {
     description: 'Tadminmueble DELETE success',

@@ -17,19 +17,21 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Tadmzonasocial} from '../models';
-import {TadmzonasocialRepository} from '../repositories';
+import { Tadmzonasocial } from '../models';
+import { TadmzonasocialRepository } from '../repositories';
+import { authenticate } from '@loopback/authentication';
 
 export class TadmzonasocialController {
   constructor(
     @repository(TadmzonasocialRepository)
-    public tadmzonasocialRepository : TadmzonasocialRepository,
-  ) {}
+    public tadmzonasocialRepository: TadmzonasocialRepository,
+  ) { }
 
+  @authenticate('Administrator')
   @post('/tadmzonasocials')
   @response(200, {
     description: 'Tadmzonasocial model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Tadmzonasocial)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Tadmzonasocial) } },
   })
   async create(
     @requestBody({
@@ -50,7 +52,7 @@ export class TadmzonasocialController {
   @get('/tadmzonasocials/count')
   @response(200, {
     description: 'Tadmzonasocial model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Tadmzonasocial) where?: Where<Tadmzonasocial>,
@@ -65,7 +67,7 @@ export class TadmzonasocialController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tadmzonasocial, {includeRelations: true}),
+          items: getModelSchemaRef(Tadmzonasocial, { includeRelations: true }),
         },
       },
     },
@@ -76,16 +78,17 @@ export class TadmzonasocialController {
     return this.tadmzonasocialRepository.find(filter);
   }
 
+  @authenticate('Administrator')
   @patch('/tadmzonasocials')
   @response(200, {
     description: 'Tadmzonasocial PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmzonasocial, {partial: true}),
+          schema: getModelSchemaRef(Tadmzonasocial, { partial: true }),
         },
       },
     })
@@ -100,17 +103,18 @@ export class TadmzonasocialController {
     description: 'Tadmzonasocial model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tadmzonasocial, {includeRelations: true}),
+        schema: getModelSchemaRef(Tadmzonasocial, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tadmzonasocial, {exclude: 'where'}) filter?: FilterExcludingWhere<Tadmzonasocial>
+    @param.filter(Tadmzonasocial, { exclude: 'where' }) filter?: FilterExcludingWhere<Tadmzonasocial>
   ): Promise<Tadmzonasocial> {
     return this.tadmzonasocialRepository.findById(id, filter);
   }
 
+  @authenticate('Administrator')
   @patch('/tadmzonasocials/{id}')
   @response(204, {
     description: 'Tadmzonasocial PATCH success',
@@ -120,7 +124,7 @@ export class TadmzonasocialController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmzonasocial, {partial: true}),
+          schema: getModelSchemaRef(Tadmzonasocial, { partial: true }),
         },
       },
     })
@@ -129,6 +133,7 @@ export class TadmzonasocialController {
     await this.tadmzonasocialRepository.updateById(id, tadmzonasocial);
   }
 
+  @authenticate('Administrator')
   @put('/tadmzonasocials/{id}')
   @response(204, {
     description: 'Tadmzonasocial PUT success',
@@ -140,6 +145,7 @@ export class TadmzonasocialController {
     await this.tadmzonasocialRepository.replaceById(id, tadmzonasocial);
   }
 
+  @authenticate('Administrator')
   @del('/tadmzonasocials/{id}')
   @response(204, {
     description: 'Tadmzonasocial DELETE success',

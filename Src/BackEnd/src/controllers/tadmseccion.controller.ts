@@ -21,14 +21,13 @@ import { Tadmseccion } from '../models';
 import { TadmseccionRepository } from '../repositories';
 import { authenticate } from '@loopback/authentication';
 
-
 export class TadmseccionController {
   constructor(
     @repository(TadmseccionRepository)
     public tadmseccionRepository: TadmseccionRepository,
   ) { }
 
-  @authenticate('Administrator', 'Auditor')
+  @authenticate('Administrator')
   @post('/tadmseccions')
   @response(200, {
     description: 'Tadmseccion model instance',
@@ -50,7 +49,6 @@ export class TadmseccionController {
     return this.tadmseccionRepository.create(tadmseccion);
   }
 
-  @authenticate.skip()
   @get('/tadmseccions/count')
   @response(200, {
     description: 'Tadmseccion model count',
@@ -80,6 +78,7 @@ export class TadmseccionController {
     return this.tadmseccionRepository.find(filter);
   }
 
+  @authenticate('Administrator')
   @patch('/tadmseccions')
   @response(200, {
     description: 'Tadmseccion PATCH success count',
@@ -115,6 +114,7 @@ export class TadmseccionController {
     return this.tadmseccionRepository.findById(id, filter);
   }
 
+  @authenticate('Administrator')
   @patch('/tadmseccions/{id}')
   @response(204, {
     description: 'Tadmseccion PATCH success',
@@ -143,7 +143,7 @@ export class TadmseccionController {
   ): Promise<void> {
     await this.tadmseccionRepository.replaceById(id, tadmseccion);
   }
-
+  @authenticate('Administrator')
   @del('/tadmseccions/{id}')
   @response(204, {
     description: 'Tadmseccion DELETE success',

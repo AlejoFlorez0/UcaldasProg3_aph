@@ -17,19 +17,21 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Tgeparametros} from '../models';
-import {TgeparametrosRepository} from '../repositories';
+import { Tgeparametros } from '../models';
+import { TgeparametrosRepository } from '../repositories';
+import { authenticate } from '@loopback/authentication';
 
+@authenticate('Administrator')
 export class TgeparametrosController {
   constructor(
     @repository(TgeparametrosRepository)
-    public tgeparametrosRepository : TgeparametrosRepository,
-  ) {}
+    public tgeparametrosRepository: TgeparametrosRepository,
+  ) { }
 
   @post('/tgeparametros')
   @response(200, {
     description: 'Tgeparametros model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Tgeparametros)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Tgeparametros) } },
   })
   async create(
     @requestBody({
@@ -50,7 +52,7 @@ export class TgeparametrosController {
   @get('/tgeparametros/count')
   @response(200, {
     description: 'Tgeparametros model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Tgeparametros) where?: Where<Tgeparametros>,
@@ -65,7 +67,7 @@ export class TgeparametrosController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tgeparametros, {includeRelations: true}),
+          items: getModelSchemaRef(Tgeparametros, { includeRelations: true }),
         },
       },
     },
@@ -79,13 +81,13 @@ export class TgeparametrosController {
   @patch('/tgeparametros')
   @response(200, {
     description: 'Tgeparametros PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tgeparametros, {partial: true}),
+          schema: getModelSchemaRef(Tgeparametros, { partial: true }),
         },
       },
     })
@@ -100,13 +102,13 @@ export class TgeparametrosController {
     description: 'Tgeparametros model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tgeparametros, {includeRelations: true}),
+        schema: getModelSchemaRef(Tgeparametros, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tgeparametros, {exclude: 'where'}) filter?: FilterExcludingWhere<Tgeparametros>
+    @param.filter(Tgeparametros, { exclude: 'where' }) filter?: FilterExcludingWhere<Tgeparametros>
   ): Promise<Tgeparametros> {
     return this.tgeparametrosRepository.findById(id, filter);
   }
@@ -120,7 +122,7 @@ export class TgeparametrosController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tgeparametros, {partial: true}),
+          schema: getModelSchemaRef(Tgeparametros, { partial: true }),
         },
       },
     })

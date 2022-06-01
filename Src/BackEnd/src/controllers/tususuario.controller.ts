@@ -22,7 +22,9 @@ import { PasswordChangeCredentials, Tususuario } from '../models';
 import { Credentials } from '../models';
 import { TususuarioRepository } from '../repositories';
 import { PasswordManagerService, sessionManagerService } from '../services';
+import { authenticate } from '@loopback/authentication';
 
+@authenticate('Administrator')
 export class TususuarioController {
   constructor(
     @repository(TususuarioRepository)
@@ -51,7 +53,7 @@ export class TususuarioController {
     tususuario: Tususuario,
   ): Promise<Tususuario> {
 
-    tususuario.password = this.passwordManager.generateEncryptText(this.passwordManager.generateRandomPassword());
+    tususuario.password = this.passwordManager.generateEncryptText(tususuario.password);
     return this.tususuarioRepository.create(tususuario);
   }
 
@@ -103,6 +105,7 @@ export class TususuarioController {
     return this.tususuarioRepository.updateAll(tususuario, where);
   }
 
+  @authenticate.skip()
   @get('/tususuarios/{id}')
   @response(200, {
     description: 'Tususuario model instance',
