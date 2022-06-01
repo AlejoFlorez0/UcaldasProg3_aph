@@ -1,5 +1,5 @@
 <nav>
-    <div class="nav-wrapper green">
+    <div class="nav-wrapper Ablue">
       <a routerLink="principal" class="brand-logo">Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
@@ -11,8 +11,8 @@
     </div>
   </nav>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
+  <ul class="sidenav Ablue" id="mobile-demo">
+        <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
         <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
         <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
         <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
