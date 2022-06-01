@@ -7,6 +7,7 @@ import { RecuperarCComponent } from './general/recuperar-c/recuperar-c.component
 import { CrearRolComponent } from './Rol/crear-rol/crear-rol.component';
 import { ListarRolComponent } from './Rol/listar-rol/listar-rol.component';
 import { RemoverRolComponent } from './Rol/remover-rol/remover-rol.component';
+import { EditarRolComponent} from './Rol/editar-rol/editar-rol.component'
 import { CrearComponent } from './Usuarios/crear/crear.component';
 import { EditorComponent } from './Usuarios/editor/editor.component';
 import { EliminarComponent } from './Usuarios/eliminar/eliminar.component';
@@ -41,8 +42,8 @@ const routes: Routes = [
     path: "crear-rol",
     component:CrearRolComponent
   },{
-    path:"editar-rol/id",
-    component:EditorComponent
+    path:"editar-rol/:id",
+    component: EditarRolComponent
   },{
     path:"listar-rol",
     component:ListarRolComponent

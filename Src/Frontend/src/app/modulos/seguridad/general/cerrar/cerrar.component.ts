@@ -20,7 +20,7 @@ export class CerrarComponent implements OnInit {
   ngOnInit(): void {
       this.localstroageService.RemoverSesion()
       this.securityservice.recargarsesion(new datasessionModel());
-      this.router.navigate(["/home"])
+      this.router.navigate(["/Principal"])
   }
 
 }

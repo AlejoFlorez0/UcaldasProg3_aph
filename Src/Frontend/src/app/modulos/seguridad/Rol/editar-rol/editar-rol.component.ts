@@ -33,6 +33,7 @@ export class EditarRolComponent implements OnInit {
     this.dataForm = this.fb.group({
       id: ["",[Validators.required]],
       name: ["",[Validators.required]],
+      descripcion: [""]
     })
   }
 
@@ -41,11 +42,13 @@ export class EditarRolComponent implements OnInit {
   }
 
   buscarDatos(){
+    console.log("jose");
     let id = this.route.snapshot.params["id"];
-    this.servicio.EditarListaRoles(id).subscribe({
+    this.servicio.ObtenerRol(id).subscribe({
       next: (data: rolModel) => {
         this.getDF["id"].setValue(data.idRol);
         this.getDF["name"].setValue(data.nombre);
+        this.getDF["descripcion"].setValue(data.descripcion)
       }
     });
   }
@@ -54,10 +57,11 @@ export class EditarRolComponent implements OnInit {
     let model = new rolModel();
     model.nombre = this.getDF["name"].value
     model.idRol= this.getDF["id"].value
-    this.servicio.GuardarListaRoles(model).subscribe({
+    model.descripcion= this.getDF["descripcion"].value
+    this.servicio.EditarListaRoles(model).subscribe({
       next: (data: rolModel) =>{
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_ACTUALIZADO)
-        this.router.navigate(["/seguridad/crear-rol"])
+        this.router.navigate(["/seguridad/listar-rol"])
       }
     })
   }
