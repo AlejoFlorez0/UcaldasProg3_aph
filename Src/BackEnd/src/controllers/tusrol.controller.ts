@@ -4,24 +4,16 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import { Tusrol } from '../models';
-import { TusrolRepository } from '../repositories';
-import { authenticate } from '@loopback/authentication';
+import {Tusrol} from '../models';
+import {TusrolRepository} from '../repositories';
 
-@authenticate('Administrator')
 export class TusrolController {
   constructor(
     @repository(TusrolRepository)
@@ -31,7 +23,7 @@ export class TusrolController {
   @post('/tusrols')
   @response(200, {
     description: 'Tusrol model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tusrol) } },
+    content: {'application/json': {schema: getModelSchemaRef(Tusrol)}},
   })
   async create(
     @requestBody({
@@ -52,7 +44,7 @@ export class TusrolController {
   @get('/tusrols/count')
   @response(200, {
     description: 'Tusrol model count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tusrol) where?: Where<Tusrol>,
@@ -67,7 +59,7 @@ export class TusrolController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tusrol, { includeRelations: true }),
+          items: getModelSchemaRef(Tusrol, {includeRelations: true}),
         },
       },
     },
@@ -81,13 +73,13 @@ export class TusrolController {
   @patch('/tusrols')
   @response(200, {
     description: 'Tusrol PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tusrol, { partial: true }),
+          schema: getModelSchemaRef(Tusrol, {partial: true}),
         },
       },
     })
@@ -102,13 +94,13 @@ export class TusrolController {
     description: 'Tusrol model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tusrol, { includeRelations: true }),
+        schema: getModelSchemaRef(Tusrol, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tusrol, { exclude: 'where' }) filter?: FilterExcludingWhere<Tusrol>
+    @param.filter(Tusrol, {exclude: 'where'}) filter?: FilterExcludingWhere<Tusrol>
   ): Promise<Tusrol> {
     return this.tusrolRepository.findById(id, filter);
   }
@@ -122,7 +114,7 @@ export class TusrolController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tusrol, { partial: true }),
+          schema: getModelSchemaRef(Tusrol, {partial: true}),
         },
       },
     })

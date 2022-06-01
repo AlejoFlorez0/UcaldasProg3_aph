@@ -1,28 +1,21 @@
-import { service } from '@loopback/core';
+import {authenticate} from '@loopback/authentication';
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import { PasswordChangeCredentials, Tususuario } from '../models';
-import { Credentials } from '../models';
-import { TususuarioRepository } from '../repositories';
-import { PasswordManagerService, sessionManagerService } from '../services';
-import { authenticate } from '@loopback/authentication';
+import {Credentials, PasswordChangeCredentials, Tususuario} from '../models';
+import {TususuarioRepository} from '../repositories';
+import {PasswordManagerService, sessionManagerService} from '../services';
 
 @authenticate('Administrator')
 export class TususuarioController {
@@ -38,7 +31,7 @@ export class TususuarioController {
   @post('/tususuarios')
   @response(200, {
     description: 'Tususuario model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tususuario) } },
+    content: {'application/json': {schema: getModelSchemaRef(Tususuario)}},
   })
   async create(
     @requestBody({
@@ -60,7 +53,7 @@ export class TususuarioController {
   @get('/tususuarios/count')
   @response(200, {
     description: 'Tususuario model count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tususuario) where?: Where<Tususuario>,
@@ -75,7 +68,7 @@ export class TususuarioController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tususuario, { includeRelations: true }),
+          items: getModelSchemaRef(Tususuario, {includeRelations: true}),
         },
       },
     },
@@ -89,13 +82,13 @@ export class TususuarioController {
   @patch('/tususuarios')
   @response(200, {
     description: 'Tususuario PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, { partial: true }),
+          schema: getModelSchemaRef(Tususuario, {partial: true}),
         },
       },
     })
@@ -111,13 +104,13 @@ export class TususuarioController {
     description: 'Tususuario model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tususuario, { includeRelations: true }),
+        schema: getModelSchemaRef(Tususuario, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tususuario, { exclude: 'where' }) filter?: FilterExcludingWhere<Tususuario>
+    @param.filter(Tususuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Tususuario>
   ): Promise<Tususuario> {
     return this.tususuarioRepository.findById(id, filter);
   }
@@ -131,7 +124,7 @@ export class TususuarioController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tususuario, { partial: true }),
+          schema: getModelSchemaRef(Tususuario, {partial: true}),
         },
       },
     })
@@ -161,9 +154,10 @@ export class TususuarioController {
 
   /**
    * Obtendrá los datos de un cliente a base de su correo y contraseña
-   * @param credentials 
-   * @returns 
+   * @param credentials
+   * @returns
    */
+  @authenticate.skip()
   @post('/tususuarios/recognize')
   @response(200, {
   })
@@ -187,9 +181,10 @@ export class TususuarioController {
 
   /**
    * Recuperar una contraseña
-   * @param credentials 
-   * @returns 
+   * @param credentials
+   * @returns
    */
+  @authenticate.skip()
   @post('/tususuarios/restorePassword')
   @response(200, {
     description: "Recuperación de contraseña"
@@ -215,9 +210,10 @@ export class TususuarioController {
 
   /**
    * Cambio de contraseña
-   * @param credentials 
-   * @returns 
+   * @param credentials
+   * @returns
    */
+  @authenticate.skip()
   @post('/tususuarios/changePassword')
   @response(200, {
     description: "Cambio de contraseña"
