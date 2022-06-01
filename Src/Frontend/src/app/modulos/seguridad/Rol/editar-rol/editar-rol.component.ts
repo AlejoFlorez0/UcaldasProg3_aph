@@ -26,6 +26,7 @@ export class EditarRolComponent implements OnInit {
 
   ngOnInit(): void {
     this.CreacionDeFormularios()
+    this.buscarDatos()
   }
 
   CreacionDeFormularios(){
