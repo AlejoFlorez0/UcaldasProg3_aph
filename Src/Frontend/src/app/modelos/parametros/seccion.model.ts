@@ -1,5 +1,5 @@
-export class TiposModel{
-    id?:number;
+export class SeccionModel{
+    id?:Number;
     nombre?:string;
     descripcion?:string;
 }

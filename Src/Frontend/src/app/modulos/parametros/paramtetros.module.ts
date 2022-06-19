@@ -17,6 +17,7 @@ import { CrearInmubleComponent } from './Inmueble/crear-inmuble/crear-inmuble.co
 import { EditarinmuebleComponent } from './Inmueble/editarinmueble/editarinmueble.component';
 import { ListarInmuebleComponent } from './Inmueble/listar-inmueble/listar-inmueble.component';
 import { ReomverInmuebleComponent } from './Inmueble/reomver-inmueble/reomver-inmueble.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -40,7 +41,9 @@ import { ReomverInmuebleComponent } from './Inmueble/reomver-inmueble/reomver-in
   ],
   imports: [
     CommonModule,
-    ParametrosRoutingModule
+    FormsModule,
+    ParametrosRoutingModule,
+    
   ]
 })
 export class parametrosmodule { }

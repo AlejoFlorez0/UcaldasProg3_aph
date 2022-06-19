@@ -7,20 +7,30 @@ import { TipoService } from 'src/app/servicios/parametros/tipo.service';
   templateUrl: './listar-tipo.component.html',
   styleUrls: ['./listar-tipo.component.css']
 })
-export class ListarTipoComponent implements OnInit {
-  tipos: TiposModel[] = []
 
-  constructor(private servicio: TipoService) { }
+
+export class ListarTipoComponent implements OnInit {
+
+  listaTipos: TiposModel[] = [
+    {
+      id: 1,
+      nombre: "A",
+      descripcion: "A"
+    }];
+
+  constructor(
+    private servicio: TipoService
+  ) { }
 
   ngOnInit(): void {
+    this.ObtenerTipo();
   }
 
-  mostrarTipos() {
-    this.servicio.ListaDeTipos().subscribe({ 
-      next: (data: TiposModel[]) => { 
-        this.tipos = data } })
+  ObtenerTipo() {
+    this.servicio.ObtenerListaTipo().subscribe({
+      next: (datos: TiposModel[]) => {
+        this.listaTipos = datos
+      }
+    });
   }
-
-
-
 }
