@@ -1,20 +1,21 @@
 <nav>
-    <div class="nav-wrapper Ablue">
-      <a routerLink="principal" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
-        <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="nav-wrapper Ablue">
+    <a routerLink="principal" class="brand-logo">
+      <img src="assets/Images/APH-miniLogo.png" width="90">
+    </a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
+      <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <ul class="sidenav Ablue" id="mobile-demo">
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
-        <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
-        <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
-  </ul>
-
+<ul class="sidenav Ablue" id="mobile-demo">
+  <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
+  <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
+  <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
+  <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
+</ul>

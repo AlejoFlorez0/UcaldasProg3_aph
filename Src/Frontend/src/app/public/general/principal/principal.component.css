@@ -1,0 +1,12 @@
+.text-center {
+    text-align: center;
+}
+
+#pri_generalPage {
+    min-height: 42vh;
+}
+
+#pri_imageIndex {
+    position: relative;
+    left: 40%;
+}

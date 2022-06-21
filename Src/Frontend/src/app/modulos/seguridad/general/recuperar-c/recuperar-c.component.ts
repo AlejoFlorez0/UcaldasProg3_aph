@@ -12,4 +12,12 @@ export class RecuperarCComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * 
+   */
+  restorePassword(): void {
+    var email = (<HTMLInputElement>document.getElementById("email")).value;
+    console.log(email);
+  }
+
 }

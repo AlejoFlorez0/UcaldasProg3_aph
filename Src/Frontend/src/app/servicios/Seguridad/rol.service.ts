@@ -25,8 +25,8 @@ export class RolService {
     return this.http.get<rolModel>(`${this.url}/tusrols/${id}`);
   }
 
-  EditarListaRoles(data : rolModel): Observable<rolModel> {
-    return this.http.put<rolModel>(`${this.url}/tusrols/${data.idRol}`,{
+  EditarListaRoles(data: rolModel): Observable<rolModel> {
+    return this.http.put<rolModel>(`${this.url}/tusrols/${data.idRol}`, {
       nombre: data.nombre,
       descripcion: data.descripcion
     });
@@ -42,8 +42,7 @@ export class RolService {
           Authorizacion: `Bearer ${this.tk}`
         }
       )
-    }
-    );
+    });
   }
 
   EliminarRol(id: number): Observable<any> {
@@ -55,4 +54,5 @@ export class RolService {
       )
     });
   }
+
 }

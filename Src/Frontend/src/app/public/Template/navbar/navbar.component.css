@@ -1,4 +1,9 @@
-.Ablue{
-    color:white;
+.Ablue {
+    color: white;
+    background: #3c669b !important;
+}
+
+nav {
+    padding-right: 2%;
     background: #3c669b !important;
 }
