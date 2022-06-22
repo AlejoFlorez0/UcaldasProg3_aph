@@ -75,6 +75,7 @@ export class TususuarioController {
     return this.tususuarioRepository.count(where);
   }
 
+  @authenticate.skip()
   @get('/tususuarios')
   @response(200, {
     description: 'Array of Tususuario model instances',

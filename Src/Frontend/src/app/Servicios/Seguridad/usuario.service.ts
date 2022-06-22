@@ -25,22 +25,29 @@ export class UsuarioService {
     return this.http.get<DatosUsuarioModel>(`${this.url}/tususuarios/${id}`);
   }
 
-  EditarListaUsuarios(data: DatosUsuarioModel): Observable<DatosUsuarioModel> {
-    return this.http.put<DatosUsuarioModel>(`${this.url}/tususuarios/${data.nroDocument}`, {
-      nombre1: data.primerNombre,
-      nombre2: data.segundoNombre,
-      documento: data.nroDocument,
-      apellido: data.primerApellido,
-      apellido2: data.segundoApellido,
-      email: data.email,
-      celular: data.celular
-
+  EditarListaUsuarios(info: DatosUsuarioModel): Observable<DatosUsuarioModel> {
+    return this.http.put<DatosUsuarioModel>(`${this.url}/tususuarios/${info.nroDocumento}`, {
+      nroDocumento: info.nroDocumento,
+      primerNombre: info.primerNombre,
+      segundoNombre: info.segundoNombre,
+      primerApellido: info.primerApellido,
+      segundoApellido: info.segundoApellido,
+      email: info.email,
+      password: info.password,
+      celular: info.celular,
+      rolId: info.rolId
+    }, {
+      headers: new HttpHeaders(
+        {
+          Authorizacion: `Bearer ${this.tk}`
+        }
+      )
     });
   }
 
   GuardarListaUsuarios(info: DatosUsuarioModel): Observable<DatosUsuarioModel> {
     return this.http.post<DatosUsuarioModel>(`${this.url}/tususuarios`, {
-      nroDocumento: info.nroDocument,
+      nroDocumento: info.nroDocumento,
       primerNombre: info.primerNombre,
       segundoNombre: info.segundoNombre,
       primerApellido: info.primerApellido,

@@ -4,7 +4,7 @@
     <table class="minimalistBlack" *ngIf="records.length > 0">
         <thead>
             <tr>
-                <th>nroDocument </th>
+                <th>nroDocumento </th>
                 <th>primerNombre </th>
                 <th>segundoNombre </th>
                 <th>primerApellido </th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let record of records;let i = index;">
-                <td> <span>{{record.nroDocument}}</span> </td>
+                <td> <span>{{record.nroDocumento}}</span> </td>
                 <td> <span>{{record.primerNombre}}</span> </td>
                 <td> <span>{{record.segundoNombre}}</span> </td>
                 <td> <span>{{record.primerApellido}}</span> </td>

@@ -1,5 +1,5 @@
 export class DatosUsuarioModel {
-    nroDocument?: number;
+    nroDocumento?: number;
     primerNombre?: string;
     segundoNombre?: string;
     primerApellido?: string;

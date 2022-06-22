@@ -10,17 +10,7 @@ import { UsuarioService } from 'src/app/servicios/Seguridad/usuario.service';
 })
 export class ListarComponent implements OnInit {
 
-  listaUsuarios: DatosUsuarioModel[] = [
-    {
-      nroDocument: 1,
-      primerNombre: "A",
-      segundoNombre: "A",
-      primerApellido: "A",
-      segundoApellido: "A",
-      email: "A",
-      celular: "A",
-      rolId: 6
-    }];
+  listaUsuarios: DatosUsuarioModel[] = [];
 
   constructor(
     private servicio: UsuarioService

@@ -55,7 +55,7 @@ export class ArchivoCsvComponent implements OnInit {
       console.log(curruntRecord);
       if (curruntRecord.length == headerLength) {
         let csvRecord: DatosUsuarioModel = new DatosUsuarioModel();
-        csvRecord.nroDocument = Number(curruntRecord[0].trim());
+        csvRecord.nroDocumento = Number(curruntRecord[0].trim());
         csvRecord.primerNombre = curruntRecord[1].trim();
         csvRecord.segundoNombre = curruntRecord[2].trim();
         csvRecord.primerApellido = curruntRecord[3].trim();
@@ -93,7 +93,7 @@ export class ArchivoCsvComponent implements OnInit {
       const element = this.records[index];
       let model = new DatosUsuarioModel();
 
-      model.nroDocument = element.nroDocument;
+      model.nroDocumento = element.nroDocumento;
       model.primerNombre = element.primerNombre;
       model.segundoNombre = element.segundoNombre;
       model.primerApellido = element.primerApellido;
@@ -106,6 +106,7 @@ export class ArchivoCsvComponent implements OnInit {
       this.servicio.GuardarListaUsuarios(model).subscribe({
         next: (data: DatosUsuarioModel) => {
           console.log("Usuarios Guardados");
+          window.location.href = "http://localhost:4200/seguridad/Listar-Usuario";
         }
       })
 
