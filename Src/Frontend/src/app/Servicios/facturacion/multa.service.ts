@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConfiguracionInformacion } from 'src/app/Config/ConfifurationData';
 import { MultaModel } from 'src/app/modelos/facturacion/multa.model';
-import { LocalStorageService } from '../compartir/local-storage.service';
+import { LocalStorageService } from 'src/app/servicios/compartir/local-storage.service';
 
 
 @Injectable({
@@ -11,9 +11,9 @@ import { LocalStorageService } from '../compartir/local-storage.service';
 })
 export class MultaService {
 
-  url:string = ConfiguracionInformacion.GENERAL_URL;
+  url: string = ConfiguracionInformacion.GENERAL_URL;
   tk: string = "";
-  
+
   constructor(private http: HttpClient,
     private localStorageService: LocalStorageService) {
     this.tk = this.localStorageService.ObtenerToker();
@@ -55,8 +55,8 @@ export class MultaService {
     return this.http.get<MultaModel>(`${this.url}/tadmmulta/${id}`);
   }
 
-  EditarListaMulta(data : MultaModel): Observable<MultaModel> {
-    return this.http.put<MultaModel>(`${this.url}/tadmmulta/${data.id}`,{
+  EditarListaMulta(data: MultaModel): Observable<MultaModel> {
+    return this.http.put<MultaModel>(`${this.url}/tadmmulta/${data.id}`, {
       nombre: data.nombre,
       valor: data.valor,
       descripcion: data.descripcion

@@ -2,11 +2,14 @@ html,
 body {
     height: 100%;
 }
+
 html {
     display: table;
     margin: auto;
 }
 
 #login-page {
-   width: 500px;
+    min-height: 44.5vh;
+    width: 500px;
+    padding-top: 3%;
 }
