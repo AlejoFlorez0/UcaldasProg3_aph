@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatosUsuarioModel } from 'src/app/modelos/seguridad/usuario-data.model';
+import { UsuarioService } from "src/app/servicios/seguridad/usuario.service";
 
 @Component({
   selector: 'app-archivo-csv',
@@ -10,7 +11,7 @@ export class ArchivoCsvComponent implements OnInit {
 
   public records: any[] = [];
 
-  constructor() { }
+  constructor(private servicio: UsuarioService) { }
 
   ngOnInit(): void {
 
@@ -84,6 +85,32 @@ export class ArchivoCsvComponent implements OnInit {
 
   fileReset() {
     this.records = [];
+  }
+
+  saveRecords() {
+
+    for (let index = 0; index < this.records.length; index++) {
+      const element = this.records[index];
+      let model = new DatosUsuarioModel();
+
+      model.nroDocument = element.nroDocument;
+      model.primerNombre = element.primerNombre;
+      model.segundoNombre = element.segundoNombre;
+      model.primerApellido = element.primerApellido;
+      model.segundoApellido = element.segundoApellido;
+      model.email = element.email;
+      model.password = element.password;
+      model.celular = element.celular;
+      model.rolId = element.rolId;
+
+      this.servicio.GuardarListaUsuarios(model).subscribe({
+        next: (data: DatosUsuarioModel) => {
+          console.log("Usuarios Guardados");
+        }
+      })
+
+    }
+
   }
 
 }

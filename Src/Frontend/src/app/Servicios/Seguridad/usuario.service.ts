@@ -27,7 +27,7 @@ export class UsuarioService {
 
   EditarListaUsuarios(data: DatosUsuarioModel): Observable<DatosUsuarioModel> {
     return this.http.put<DatosUsuarioModel>(`${this.url}/tususuarios/${data.nroDocument}`, {
-    nombre1: data.primerNombre,
+      nombre1: data.primerNombre,
       nombre2: data.segundoNombre,
       documento: data.nroDocument,
       apellido: data.primerApellido,
@@ -40,14 +40,15 @@ export class UsuarioService {
 
   GuardarListaUsuarios(info: DatosUsuarioModel): Observable<DatosUsuarioModel> {
     return this.http.post<DatosUsuarioModel>(`${this.url}/tususuarios`, {
+      nroDocumento: info.nroDocument,
       primerNombre: info.primerNombre,
       segundoNombre: info.segundoNombre,
-      nroDocumento: info.nroDocument,
       primerApellido: info.primerApellido,
       segundoApellido: info.segundoApellido,
-      correo: info.email,
-      celular: info.celular
-
+      email: info.email,
+      password: info.password,
+      celular: info.celular,
+      rolId: info.rolId
     }, {
       headers: new HttpHeaders(
         {

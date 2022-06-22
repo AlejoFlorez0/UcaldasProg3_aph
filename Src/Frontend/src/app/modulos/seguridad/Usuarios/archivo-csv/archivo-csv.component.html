@@ -28,6 +28,7 @@
         </tbody>
     </table>
 
-    <input type="button" id="user_uploadFileBtn" class="btn" value="Guardar Usuarios" *ngIf="records.length > 0">
+    <input type="button" id="user_uploadFileBtn" class="btn" value="Guardar Usuarios" *ngIf="records.length > 0"
+        (click)="saveRecords()">
 
 </div>
