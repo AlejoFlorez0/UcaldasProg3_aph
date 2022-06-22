@@ -9,6 +9,9 @@
       <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="facturacion/Listar-Multa">listar multa</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="parametros/Listar-Seccion">listar Seccion</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="parametros/Listar-Tipo">listar Tipo</a></li>
     </ul>
   </div>
 </nav>
