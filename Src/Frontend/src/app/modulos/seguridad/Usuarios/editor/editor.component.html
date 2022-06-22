@@ -4,17 +4,33 @@
       <div class="row">
         <div class="input-field col s12">
           <input formControlName="name" id="txtName" type="text">
-          <label clase="active" for="txtName">Nombre</label>
+          <label clase="active" for="txtName">Primer Nombre</label>
+        </div>
+        <div class="input-field col s12">
+          <input formControlName="descripcion" id="txtDescripcion" type="text">
+          <label for="txtDescripcion">Segundo nombre</label>
         </div>
         <div class="input-field col s12">
             <input formControlName="descripcion" id="txtDescripcion" type="text">
-            <label for="txtDescripcion">Descripcion</label>
+            <label for="txtDescripcion">Primer apellido</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="descripcion" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Segundo apellido</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="descripcion" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Email</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="descripcion" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Celular</label>
           </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <button type="button" class="btn btn-success" (click)="guardarDatos()">Guardar</button>
-          &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar-rol">Cancelar</a>
+          &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar">Cancelar</a>
         </div>
       </div>
     </form>

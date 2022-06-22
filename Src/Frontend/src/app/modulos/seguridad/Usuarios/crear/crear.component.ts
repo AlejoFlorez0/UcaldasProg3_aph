@@ -46,14 +46,14 @@ export class CrearComponent implements OnInit {
   }
   guardarDatos(){
     let model = new DatosUsuarioModel();
-    model.nroDocument = this.getDF["Documento"].value
-    model.primerNombre= this.getDF["Primer Nombre"].value
-    model.segundoNombre= this.getDF["Segundo Nombre"].value
-    model.primerApellido= this.getDF["Primer Apellido"].value
-    model.segundoApellido= this.getDF["Segundo Apellido"].value
-    model.email= this.getDF["Correo"].value
-    model.celular= this.getDF["Celular"].value
-    model.rolId= this.getDF["IdRol"].value
+    model.primerNombre= this.getDF["primerNombre"].value
+    model.primerNombre= this.getDF["segundoNombre"].value
+    model.primerApellido= this.getDF["primerApellido"].value
+    model.segundoApellido= this.getDF["segundoApellido"].value
+    model.email= this.getDF["email"].value
+    model.celular= this.getDF["celular"].value
+    
+    model.rolId= 6;
     this.servicio.GuardarListaUsuarios(model).subscribe({
       next: (data: DatosUsuarioModel) =>{
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_GUARDADO)

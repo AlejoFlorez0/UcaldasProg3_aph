@@ -32,7 +32,6 @@ export class EditorComponent implements OnInit {
     this.dataForm = this.fb.group({
       nroDocument: ["",[Validators.required]],
       primerNombre: ["",[Validators.required]],
-      segundoNombre: ["",[Validators.required]],
       primerApellido: ["",[Validators.required]],
       segundoApellido: ["",[Validators.required]],
       email: ["",[Validators.required]],
@@ -68,14 +67,14 @@ export class EditorComponent implements OnInit {
     model.primerNombre= this.getDF["Primer Nombre"].value
     model.segundoNombre= this.getDF["Segundo Nombre"].value
     model.primerApellido= this.getDF["Primer Apellido"].value
-    model.segundoApellido= this.getDF["Primer Apellido"].value
+    model.segundoApellido= this.getDF["Segundo Apellido"].value
     model.email= this.getDF["Correo"].value
     model.celular= this.getDF["Celular"].value
-    model.rolId = this.getDF["Rolos"].value 
+    model.rolId = this.getDF["IdRol"].value 
     this.servicio.EditarListaUsuarios(model).subscribe({
       next: (data: DatosUsuarioModel) =>{
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_ACTUALIZADO)
-        this.router.navigate(["/seguridad/listar-rol"])
+        this.router.navigate(["/seguridad/listar"])
       }
     })
 }

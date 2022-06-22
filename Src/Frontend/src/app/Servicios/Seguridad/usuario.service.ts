@@ -18,35 +18,35 @@ export class UsuarioService {
   }
 
   ObtenerListaUsuarios(): Observable<DatosUsuarioModel[]> {
-    return this.http.get<DatosUsuarioModel[]>(`${this.url}/tususuario`);
+    return this.http.get<DatosUsuarioModel[]>(`${this.url}/tususuarios`);
   }
 
   ObtenerUsuario(id: number): Observable<DatosUsuarioModel> {
-    return this.http.get<DatosUsuarioModel>(`${this.url}/tususuario/${id}`);
+    return this.http.get<DatosUsuarioModel>(`${this.url}/tususuarios/${id}`);
   }
 
   EditarListaUsuarios(data: DatosUsuarioModel): Observable<DatosUsuarioModel> {
-    return this.http.put<DatosUsuarioModel>(`${this.url}/tususuario/${data.nroDocument}`, {
+    return this.http.put<DatosUsuarioModel>(`${this.url}/tususuarios/${data.nroDocument}`, {
     nombre1: data.primerNombre,
       nombre2: data.segundoNombre,
       documento: data.nroDocument,
       apellido: data.primerApellido,
       apellido2: data.segundoApellido,
-      correo: data.email,
-      telefono: data.celular
+      email: data.email,
+      celular: data.celular
 
     });
   }
 
   GuardarListaUsuarios(info: DatosUsuarioModel): Observable<DatosUsuarioModel> {
-    return this.http.post<DatosUsuarioModel>(`${this.url}/tususuario`, {
-      nombre1: info.primerNombre,
-      nombre2: info.segundoNombre,
-      documento: info.nroDocument,
-      apellido: info.primerApellido,
-      apellido2: info.segundoApellido,
+    return this.http.post<DatosUsuarioModel>(`${this.url}/tususuarios`, {
+      primerNombre: info.primerNombre,
+      segundoNombre: info.segundoNombre,
+      nroDocumento: info.nroDocument,
+      primerApellido: info.primerApellido,
+      segundoApellido: info.segundoApellido,
       correo: info.email,
-      telefono: info.celular
+      celular: info.celular
 
     }, {
       headers: new HttpHeaders(
@@ -58,7 +58,7 @@ export class UsuarioService {
   }
 
   EliminarUsuario(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/tususuario/${id}`, {
+    return this.http.delete<any>(`${this.url}/tususuarios/${id}`, {
       headers: new HttpHeaders(
         {
           Authorizacion: `Bearer ${this.tk}`

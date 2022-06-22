@@ -2,12 +2,28 @@
     <form [formGroup]="dataForm" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input formControlName="name" id="txtName" type="text">
-          <label for="txtName">Nombre</label>
+          <input formControlName="primerNombre" id="txtName" type="text">
+          <label clase="active" for="txtName">Primer Nombre</label>
         </div>
         <div class="input-field col s12">
-            <input formControlName="descripcion" id="txtDescripcion" type="text">
-            <label for="txtName">Descripcion</label>
+          <input formControlName="segundoNombre" id="txtDescripcion" type="text">
+          <label for="txtDescripcion">Segundo nombre</label>
+        </div>
+        <div class="input-field col s12">
+            <input formControlName="primerApellido" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Primer apellido</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="segundoApellido" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Segundo apellido</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="email" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Email</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="celular" id="txtDescripcion" type="text">
+            <label for="txtDescripcion">Celular</label>
           </div>
       </div>
       <div class="row">
