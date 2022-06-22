@@ -18,6 +18,7 @@ import { EditarinmuebleComponent } from './Inmueble/editarinmueble/editarinmuebl
 import { ListarInmuebleComponent } from './Inmueble/listar-inmueble/listar-inmueble.component';
 import { ReomverInmuebleComponent } from './Inmueble/reomver-inmueble/reomver-inmueble.component';
 import { FormsModule } from '@angular/forms';
+import { InmuebleArchivoCsvComponent } from './Inmueble/inmueble-archivo-csv/inmueble-archivo-csv.component';
 
 
 
@@ -37,13 +38,14 @@ import { FormsModule } from '@angular/forms';
     CrearInmubleComponent,
     EditarinmuebleComponent,
     ListarInmuebleComponent,
-    ReomverInmuebleComponent
+    ReomverInmuebleComponent,
+    InmuebleArchivoCsvComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ParametrosRoutingModule,
-    
+
   ]
 })
 export class parametrosmodule { }

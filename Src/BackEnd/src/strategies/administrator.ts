@@ -13,7 +13,13 @@ export class administratorStrategy implements AuthenticationStrategy {
     }
 
     async authenticate(request: Request): Promise<UserProfile> {
-        let _token = parseBearerToken(request);
+
+        let _token: String = "";
+        const authHeader = String(request.headers.authorizacion);
+        if (authHeader.startsWith('Bearer ')) {
+            _token = authHeader.substring(7, authHeader.length);
+        }
+
         let _validator = null;
         let _userProfile: UserProfile = Object.assign({
             validate: false
