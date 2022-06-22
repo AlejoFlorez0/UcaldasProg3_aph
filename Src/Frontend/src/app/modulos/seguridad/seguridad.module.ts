@@ -15,6 +15,7 @@ import { CrearRolComponent } from './Rol/crear-rol/crear-rol.component';
 import { RemoverRolComponent } from './Rol/remover-rol/remover-rol.component';
 import { EditarRolComponent } from './Rol/editar-rol/editar-rol.component';
 import { ListarRolComponent } from './Rol/listar-rol/listar-rol.component';
+import { ArchivoCsvComponent } from './Usuarios/archivo-csv/archivo-csv.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ListarRolComponent } from './Rol/listar-rol/listar-rol.component';
     CrearRolComponent,
     RemoverRolComponent,
     EditarRolComponent,
-    ListarRolComponent
+    ListarRolComponent,
+    ArchivoCsvComponent
   ],
   imports: [
     CommonModule,

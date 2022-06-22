@@ -7,7 +7,7 @@ import { RecuperarCComponent } from './general/recuperar-c/recuperar-c.component
 import { CrearRolComponent } from './Rol/crear-rol/crear-rol.component';
 import { ListarRolComponent } from './Rol/listar-rol/listar-rol.component';
 import { RemoverRolComponent } from './Rol/remover-rol/remover-rol.component';
-import { EditarRolComponent} from './Rol/editar-rol/editar-rol.component'
+import { EditarRolComponent } from './Rol/editar-rol/editar-rol.component'
 import { CrearComponent } from './Usuarios/crear/crear.component';
 import { EditorComponent } from './Usuarios/editor/editor.component';
 import { EliminarComponent } from './Usuarios/eliminar/eliminar.component';
@@ -15,41 +15,41 @@ import { ListarComponent } from './Usuarios/listar/listar.component';
 
 const routes: Routes = [
   {
-    path:"Crear-Usuario",
+    path: "Crear-Usuario",
     component: CrearComponent
-  },{
-    path:"Editar-Usuario",
+  }, {
+    path: "Editar-Usuario/:id",
     component: EditorComponent
-  },{
-    path:"Eliminar-Usuario",
+  }, {
+    path: "Eliminar-Usuario/:id",
     component: EliminarComponent
-  },{
-    path:"Listar-Usuario",
+  }, {
+    path: "Listar-Usuario",
     component: ListarComponent
-  },{
-    path:"Cambiar-Contraseña",
-    component:  CambiarCComponent
-  },{
-    path:"Cerrar",
+  }, {
+    path: "Cambiar-Contraseña",
+    component: CambiarCComponent
+  }, {
+    path: "Cerrar",
     component: CerrarComponent
-  },{
-    path:"Inicio",
+  }, {
+    path: "Inicio",
     component: InicioComponent
-  },{
-    path:"Recuperar-Contraseña",
+  }, {
+    path: "Recuperar-Contraseña",
     component: RecuperarCComponent
-  },{
+  }, {
     path: "crear-rol",
-    component:CrearRolComponent
-  },{
-    path:"editar-rol/:id",
+    component: CrearRolComponent
+  }, {
+    path: "editar-rol/:id",
     component: EditarRolComponent
-  },{
-    path:"listar-rol",
-    component:ListarRolComponent
-  },{
-    path:"remover-rol/:id",
-    component:RemoverRolComponent
+  }, {
+    path: "listar-rol",
+    component: ListarRolComponent
+  }, {
+    path: "remover-rol/:id",
+    component: RemoverRolComponent
   }
 ];
 

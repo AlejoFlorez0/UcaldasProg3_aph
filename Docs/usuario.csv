@@ -1,11 +1,2 @@
-"nroDocumento","primerNombre","segundoNombre","primerApellido","segundoApellido","email","password","celular","rolId"
-1053860746,"Alejandro","","González","Flórez","Alejandro.1701913677@ucaldas.edu.co","3124092c07cd2ac62a465e7b073a6836","3215238170",1
-1057098765,"Frailejon","Hernesto","Perez"," ","FPerez@upscloud.com","69ba109c895658f4c0f163c5fd8c4898","321098765",4
-1057118765,"Bianca","","Castafiore","","jdgv@upscloud.com","1234","3217653222",6
-1057118766,"Stick","Man","Ups","Cloud","stickman@upscloud.com","5a02f8614d46213d8d9be36ef4fb3a80","3217653221",2
-1057118767,"Stick","Man2","Ups","Cloud","stickman2@upscloud.com","ed6e9e9123f8840b26e8c28963a5f4f6","3217653221",6
-1057118768,"Stick","Man3","Ups","Cloud","stickman3@upscloud.com","69ba109c895658f4c0f163c5fd8c4898","3217653221",6
-1060098654,"Angus"," ","F","A","Angus@upscloud.com","647612bceac239393559265e5f61fac7","321456765",5
-1060098655,"Wenora"," ","F","A","Wenora@upscloud.com","f43d1ab249991f8f8de1d38b74d6d0e9","321456761",2
-1067891234,"Tintin"," ","Flórez","González","tintin@upscloud.com","81dc9bdb52d04dc20036dbd8313ed055","3215678911",3
-1067891250,"José","","González","Villa","jose.1701912141@ucaldas.edu.co","b9380654320d77fdd4405acf9e09fd24","3215328170",6
+"nroDocumento,""primerNombre"",""segundoNombre"",""primerApellido"",""segundoApellido"",""email"",""password"",""celular"",""rolId"
+1053861746,Jhon,Esteban,Munoz,Castro,Jhon.Munoz@upscloud,3124092c07cd2ac62a465e7b073a6836,3215238171,6;;;;

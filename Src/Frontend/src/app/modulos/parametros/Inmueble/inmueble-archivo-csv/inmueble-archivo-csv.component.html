@@ -1,0 +1,28 @@
+<div id="inmueble_uploadFile" class="col-12">
+    <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)"
+        accept=".csv" />
+    <table class="minimalistBlack" *ngIf="records.length > 0">
+        <thead>
+            <tr>
+                <th>area</th>
+                <th>nroDocumentoPropietario</th>
+                <th>nroDocumentoHabitante</th>
+                <th>idTipoInmueble</th>
+                <th>idSeccion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of records;let i = index;">
+                <td> <span>{{record.area}}</span> </td>
+                <td> <span>{{record.nroDocumentoPropietario}}</span> </td>
+                <td> <span>{{record.nroDocumentoHabitante}}</span> </td>
+                <td> <span>{{record.idTipoInmueble}}</span> </td>
+                <td> <span>{{record.idSeccion}}</span> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="button" id="inmueble_uploadFileBtn" class="btn" value="Guardar Inmuelbles" *ngIf="records.length > 0"
+        (click)="saveRecords()">
+
+</div>

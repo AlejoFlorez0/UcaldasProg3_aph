@@ -1,1 +1,45 @@
-<p>editor works!</p>
+<div class="row">
+  <form [formGroup]="dataForm" class="col s12">
+    <input type="hidden" formControlName="nroDocumento" />
+    <div class="row">
+      <div class="input-field col s12">
+        <input formControlName="primerNombre" id="txtName" type="text">
+        <label class="active" for="txtName">Primer Nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="segundoNombre" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Segundo nombre</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="primerApellido" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Primer apellido</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="segundoApellido" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Segundo apellido</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="email" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="password" id="txtDescripcion" type="password">
+        <label class="active" for="txtDescripcion">Contraseña</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="celular" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Celular</label>
+      </div>
+      <div class="input-field col s12">
+        <input formControlName="rolId" id="txtDescripcion" type="text">
+        <label class="active" for="txtDescripcion">Rol</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button type="button" class="btn btn-success" (click)="guardarDatos()">Guardar</button>
+        &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar">Cancelar</a>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,1 +1,32 @@
-<p>crear-inmuble works!</p>
+<div class="row">
+    <form [formGroup]="dataForm" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input formControlName="area" id="txtName" type="text">
+          <label for="txtName">Area</label>
+        </div>
+        <div class="input-field col s12">
+            <input formControlName="nroDocumentoPropietario" id="txtDescripcion" type="text">
+            <label for="txtName">Documento del Propietario</label>
+          </div>
+        <div class="input-field col s12">
+            <input formControlName="nroDocumentoHabitante" id="txtDescripcion" type="text">
+            <label for="txtName">Documento del Habitante</label>
+        </div>
+        <div class="input-field col s12">
+            <input formControlName="idTipoInmueble" id="txtDescripcion" type="text">
+            <label for="txtName">Tipo de inmueble</label>
+          </div>
+          <div class="input-field col s12">
+            <input formControlName="idSeccion" id="txtDescripcion" type="text">
+            <label for="txtName">Sección</label>
+          </div>     
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button type="button" class="btn btn-success" (click)="guardarDatos()">Guardar</button>
+          &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar-rol">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
