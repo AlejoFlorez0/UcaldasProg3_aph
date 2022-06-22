@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '../compartir/local-storage.service';
 import { Observable } from 'rxjs';
 import { ConfiguracionInformacion } from 'src/app/Config/ConfifurationData';
 import { TiposModel } from 'src/app/modelos/parametros/tipo.model';
-import { LocalStorageService } from '../compartir/local-storage.service';
+
 
 @Injectable({
   providedIn: 'root'
