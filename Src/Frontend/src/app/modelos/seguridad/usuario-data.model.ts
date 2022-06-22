@@ -6,4 +6,5 @@ export class DatosUsuarioModel{
     segundoApellido?: string;
     email?: string;
     celular?: string;
+    rolId?: number;
 }

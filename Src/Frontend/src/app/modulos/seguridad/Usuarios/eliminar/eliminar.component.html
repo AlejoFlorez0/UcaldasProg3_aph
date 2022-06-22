@@ -1,1 +1,43 @@
-<p>eliminar works!</p>
+<div class="row">
+    <div class="row">
+        <div class="input-field col s12">
+
+            <strong>¿Desea eliminar la siguiente información?</strong>
+            <br />
+            <ul>
+                <li>
+                    id: {{nroDocument}}
+                </li>
+                <li>
+                    nombre: {{primerNombre}}
+                </li>
+                <li>
+                    descripcion: {{segundoNombre}}
+                </li>
+                <li>
+                    descripcion: {{primerApellido}}
+                </li>
+                <li>
+                    descripcion: {{segundoApellido}}
+                </li>
+                <li>
+                    descripcion: {{email}}
+                </li>
+                <li>
+                    descripcion: {{celular}}
+                </li>
+                <li>
+                    descripcion: {{rolId}}
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <button type="button" class="btn btn-success" (click)="EliminarDatos()">Eliminar</button>
+            &nbsp;<a class="btn btn-warning orange" routerLink="/seguridad/listar">Cancelar</a>
+        </div>
+    </div>
+</div>
