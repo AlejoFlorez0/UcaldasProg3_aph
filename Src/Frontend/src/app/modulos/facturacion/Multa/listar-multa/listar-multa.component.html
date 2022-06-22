@@ -1,1 +1,40 @@
-<p>listar-multa works!</p>
+<br />
+<a routerLink="/facturacion/Crear-Multa" class="btn btn-success">Agregar Multa</a>
+
+<fieldset>
+    <legend>Listado de Multas</legend>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                   Valor
+                </th>
+                <th>
+                    Descripcion
+                 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of listaRoles ">
+                <td>
+                    {{r.id}}
+                </td>
+                <td>
+                    {{r.nombre}}
+                </td>
+                <td>
+                    {{r.descripcion}}
+                </td>
+                <td>
+                    <a routerLink="/seguridad/Editar-Multa" class="btn btn-warning orange">Editar</a>&nbsp;
+                    <a routerLink="/seguridad/Anular-Multa" class="btn btn-warning red">Eliminar</a>
+                </td>
+        </tbody>
+    </table>
+</fieldset>
