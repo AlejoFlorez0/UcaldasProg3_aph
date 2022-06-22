@@ -9,16 +9,7 @@ import { InmuebleService } from 'src/app/servicios/parametros/inmueble.service';
 })
 export class ListarInmuebleComponent implements OnInit {
 
-  listaRoles: InmuebleModel[] = [
-    {
-      idInmueble: 1,
-      area: "Cuadrada",
-      nroDocumentoPropietario: 0,
-      nroDocumentoHabitante: 0,
-      idTipoInmueble: 1,
-      idSeccion: 1
-
-    }];
+  listaRoles: InmuebleModel[] = [];
 
   constructor(
     private servicio: InmuebleService

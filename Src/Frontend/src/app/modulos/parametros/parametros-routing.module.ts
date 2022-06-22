@@ -18,53 +18,53 @@ import { ListarTipoComponent } from './Tipo/listar-tipo/listar-tipo.component';
 import { RemoverTipoComponent } from './Tipo/remover-tipo/remover-tipo.component';
 
 const routes: Routes = [
-    {
-    path:"Crear-Adicional",
+  {
+    path: "Crear-Adicional",
     component: CrearAdicionalComponent
-  },{
-    path:"Editar-Adicional",
-    component:  EditarAdicionalComponent
-  },{
-    path:"Eliminar-Adiconal",
+  }, {
+    path: "Editar-Adicional",
+    component: EditarAdicionalComponent
+  }, {
+    path: "Eliminar-Adiconal",
     component: RemoverAdicionalComponent
-  },{
-    path:"Listar-Adicional",
+  }, {
+    path: "Listar-Adicional",
     component: ListarAdicionalComponent
-  },{
-    path:"Crear-Inmueble",
+  }, {
+    path: "Crear-Inmueble",
     component: CrearInmubleComponent
-  },{
-    path:"Editar-Inmueble",
-    component:  EditarinmuebleComponent
-  },{
-    path:"Eliminar-Inmueble",
+  }, {
+    path: "Editar-Inmueble/:id",
+    component: EditarinmuebleComponent
+  }, {
+    path: "Eliminar-Inmueble/:id",
     component: ReomverInmuebleComponent
-  },{
-    path:"Listar-Inmueble",
+  }, {
+    path: "Listar-Inmueble",
     component: ListarInmuebleComponent
-  },{
-    path:"Crear-Seccion",
+  }, {
+    path: "Crear-Seccion",
     component: CrearSeccionComponent
-  },{
-    path:"Editar-Seccion",
-    component:  EditarSeccionComponent
-  },{
-    path:"Eliminar-Seccion",
+  }, {
+    path: "Editar-Seccion",
+    component: EditarSeccionComponent
+  }, {
+    path: "Eliminar-Seccion",
     component: RemoverSeccionComponent
-  },{
-    path:"Listar-Seccion",
+  }, {
+    path: "Listar-Seccion",
     component: ListarSeccionComponent
-  },{
-    path:"Crear-Tipo",
+  }, {
+    path: "Crear-Tipo",
     component: CrearTipoComponent
-  },{
-    path:"Editar-Tipo",
-    component:  EditarTipoComponent
-  },{
-    path:"Eliminar-Tipo",
+  }, {
+    path: "Editar-Tipo",
+    component: EditarTipoComponent
+  }, {
+    path: "Eliminar-Tipo",
     component: RemoverTipoComponent
-  },{
-    path:"Listar-Tipo",
+  }, {
+    path: "Listar-Tipo",
     component: ListarTipoComponent
   }
 

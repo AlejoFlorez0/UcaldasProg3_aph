@@ -60,7 +60,7 @@ export class TadminmuebleController {
     return this.tadminmuebleRepository.count(where);
   }
 
-  @authenticate('Administrator', 'Owner', 'Auditor', 'Watchmen')
+  @authenticate.skip()
   @get('/tadminmuebles')
   @response(200, {
     description: 'Array of Tadminmueble model instances',
@@ -99,7 +99,7 @@ export class TadminmuebleController {
     return this.tadminmuebleRepository.updateAll(tadminmueble, where);
   }
 
-  @authenticate('Administrator', 'Owner', 'Watchmen')
+  @authenticate.skip()
   @get('/tadminmuebles/{id}')
   @response(200, {
     description: 'Tadminmueble model instance',

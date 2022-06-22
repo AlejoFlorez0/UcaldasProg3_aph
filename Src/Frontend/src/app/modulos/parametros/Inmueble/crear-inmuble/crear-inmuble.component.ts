@@ -28,11 +28,11 @@ export class CrearInmubleComponent implements OnInit {
 
   CreacionDeFormularios() {
     this.dataForm = this.fb.group({
-      area: ["",[Validators.required]],
-      nroDocumentoPropietario: ["",[Validators.required]],
-      nroDocumentoHabitante: ["",[Validators.required]],
-      idTipoInmueble: [1,[Validators.required]],
-      idSeccion: [1,[Validators.required]],
+      area: ["", [Validators.required]],
+      nroDocumentoPropietario: ["", [Validators.required]],
+      nroDocumentoHabitante: ["", [Validators.required]],
+      idTipoInmueble: [1, [Validators.required]],
+      idSeccion: [1, [Validators.required]],
     })
   }
 
@@ -41,16 +41,17 @@ export class CrearInmubleComponent implements OnInit {
   }
   guardarDatos() {
     let model = new InmuebleModel();
+
     model.area = this.getDF["area"].value
-    model.nroDocumentoPropietario = this.getDF["nroDocumentoPropietario"].value
-    model.nroDocumentoHabitante = this.getDF["nroDocumentoHabitante"].value
+    model.nroDocumentoPropietario = Number(this.getDF["nroDocumentoPropietario"].value)
+    model.nroDocumentoHabitante = Number(this.getDF["nroDocumentoHabitante"].value)
     model.idTipoInmueble = this.getDF["idTipoInmueble"].value
     model.idSeccion = this.getDF["idSeccion"].value
 
     this.servicio.GuardarListaInmueble(model).subscribe({
       next: (data: InmuebleModel) => {
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_GUARDADO)
-        this.router.navigate(["/parametros/crear-inmueble"])
+        this.router.navigate(["/parametros/Listar-Inmueble"])
       }
     })
   }
