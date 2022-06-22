@@ -28,8 +28,11 @@ export class CrearInmubleComponent implements OnInit {
 
   CreacionDeFormularios() {
     this.dataForm = this.fb.group({
-      name: ["", [Validators.required]],
-      descripcion: ["", [Validators.required]]
+      area: ["",[Validators.required]],
+      nroDocumentoPropietario: ["",[Validators.required]],
+      nroDocumentoHabitante: ["",[Validators.required]],
+      idTipoInmueble: [1,[Validators.required]],
+      idSeccion: [1,[Validators.required]],
     })
   }
 

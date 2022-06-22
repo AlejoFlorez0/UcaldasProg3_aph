@@ -1,6 +1,6 @@
 export class InmuebleModel {
     idInmueble?: number;
-    area?: String;
+    area?: string;
     nroDocumentoPropietario?: number;
     nroDocumentoHabitante?: number;
     idTipoInmueble?: number;

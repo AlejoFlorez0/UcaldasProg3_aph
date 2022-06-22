@@ -1,1 +1,35 @@
-<p>reomver-inmueble works!</p>
+<div class="row">
+    <div class="row">
+        <div class="input-field col s12">
+
+            <strong>¿Desea eliminar la siguiente información?</strong>
+            <br />
+            <ul>
+                <li>
+                    id: {{idInmueble}}
+                </li>
+                <li>
+                    Area: {{area}}
+                </li>
+                <li>
+                    Documento del propietario: {{nroDocumentoPropietario}}
+                </li>
+                <li>
+                    Documento del Habitante: {{nroDocumentoHabitante}}
+                </li>
+                <li>
+                    Inmueble tipo: {{idTipoInmueble}}
+                </li>
+                <li>
+                    Sección: {{idSeccion}}
+                </li> 
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <button type="button" class="btn btn-success" (click)="EliminarDatos()">Eliminar</button>
+            &nbsp;<a class="btn btn-warning orange" routerLink="/parametros/listar-inmueble">Cancelar</a>
+        </div>
+    </div>
+</div>
