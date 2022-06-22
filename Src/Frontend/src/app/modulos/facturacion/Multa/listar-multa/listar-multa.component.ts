@@ -9,12 +9,7 @@ import { MultaService } from 'src/app/Servicios/facturacion/multa.service';
 })
 export class ListarMultaComponent implements OnInit {
 
-  listaRoles: MultaModel[] = [
-    {
-      id: 1,
-      nombre: "A",
-      descripcion: "A"
-    }];
+  listaRoles: MultaModel[] = [];
 
   constructor(
     private servicio: MultaService
@@ -26,7 +21,7 @@ export class ListarMultaComponent implements OnInit {
 
   ObtenerRoles() {
     this.servicio.ObtenerListaMulta().subscribe({
-      next: (datos: MultaModel[]) => {
+      next: (datos: MultaModel[]) => {    
         this.listaRoles = datos
       }
     });

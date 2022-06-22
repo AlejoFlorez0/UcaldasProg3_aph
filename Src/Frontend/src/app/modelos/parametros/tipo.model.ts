@@ -1,5 +1,5 @@
 export class TiposModel{
-    id?:number;
+    idTipoInmueble?:number;
     nombre?:string;
     descripcion?:string;
 }

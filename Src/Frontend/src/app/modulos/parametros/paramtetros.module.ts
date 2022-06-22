@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ParametrosRoutingModule } from './parametros-routing.module';
 import { CrearAdicionalComponent } from './Adicional/crear-adicional/crear-adicional.component';
 import { EditarAdicionalComponent } from './Adicional/editar-adicional/editar-adicional.component';
@@ -17,7 +16,8 @@ import { CrearInmubleComponent } from './Inmueble/crear-inmuble/crear-inmuble.co
 import { EditarinmuebleComponent } from './Inmueble/editarinmueble/editarinmueble.component';
 import { ListarInmuebleComponent } from './Inmueble/listar-inmueble/listar-inmueble.component';
 import { ReomverInmuebleComponent } from './Inmueble/reomver-inmueble/reomver-inmueble.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { InmuebleArchivoCsvComponent } from './Inmueble/inmueble-archivo-csv/inmueble-archivo-csv.component';
 
 
 
@@ -43,7 +43,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ParametrosRoutingModule,
-    
+    ReactiveFormsModule
   ]
 })
 export class parametrosmodule { }

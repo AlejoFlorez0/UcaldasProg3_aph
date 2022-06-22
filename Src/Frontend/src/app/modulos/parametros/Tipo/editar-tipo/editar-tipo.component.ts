@@ -47,7 +47,7 @@ export class EditarTipoComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.servicio.ObtenerTipo(id).subscribe({
       next: (data: TiposModel) => {
-        this.getDF["id"].setValue(data.id);
+        this.getDF["id"].setValue(data.idTipoInmueble);
         this.getDF["name"].setValue(data.nombre);
         this.getDF["descripcion"].setValue(data.descripcion)
       }
@@ -57,7 +57,7 @@ export class EditarTipoComponent implements OnInit {
   guardarDatos(){
     let model = new TiposModel();
     model.nombre = this.getDF["name"].value
-    model.id= this.getDF["id"].value
+    model.idTipoInmueble= this.getDF["id"].value
     model.descripcion= this.getDF["descripcion"].value
     this.servicio.EditarListaTipo(model).subscribe({
       next: (data: TiposModel) =>{

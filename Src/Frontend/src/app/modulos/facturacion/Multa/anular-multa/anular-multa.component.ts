@@ -32,8 +32,8 @@ export class AnularMultaComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.servicio.ObtenerMulta(id).subscribe({
       next: (data: MultaModel) => {
-        if(data.id && data.nombre && data.valor && data.descripcion){
-        this.id = data.id;
+        if(data.idMulta && data.nombre && data.valor && data.descripcion){
+        this.id = data.idMulta;
         this.name =data.nombre;
         this.description =data.descripcion;
 
@@ -46,7 +46,7 @@ export class AnularMultaComponent implements OnInit {
     this.servicio.EliminarMulta(this.id).subscribe({
       next: (data: any) =>{
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_ELIMINACION)
-        this.router.navigate(["/seguridad/listar-rol"])
+        this.router.navigate(["/facturacion/Listar-Multa"])
       }
     })
   }

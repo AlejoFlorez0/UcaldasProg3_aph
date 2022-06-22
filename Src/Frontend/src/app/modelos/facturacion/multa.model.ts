@@ -1,5 +1,5 @@
 export class MultaModel{
-    id?:number;
+    idMulta?:number;
     nombre?:string;
     valor?:number;
     descripcion?:string;

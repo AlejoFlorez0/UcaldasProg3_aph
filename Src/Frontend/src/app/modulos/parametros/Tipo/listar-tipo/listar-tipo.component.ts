@@ -13,7 +13,7 @@ export class ListarTipoComponent implements OnInit {
 
   listaTipos: TiposModel[] = [
     {
-      id: 1,
+      idTipoInmueble: 1,
       nombre: "A",
       descripcion: "A"
     }];

@@ -10,7 +10,7 @@ import { NotFoundComponent } from './public/Errors/not-found/not-found.component
 import { InternalServerComponent } from './public/Errors/internal-server/internal-server.component';
 import { PrincipalComponent } from './public/general/principal/principal.component';
 import { HttpClientModule} from  '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

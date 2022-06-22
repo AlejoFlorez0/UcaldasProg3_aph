@@ -19,11 +19,11 @@ export class TipoService {
   }
 
   ListaDeTipos(): Observable<TiposModel[]> {
-    return this.http.get<TiposModel[]>(`${this.url}/tadmtipoinmueble`)
+    return this.http.get<TiposModel[]>(`${this.url}/tadmtipoinmuebles`)
   }
 
   GuardarListaTipos(info: TiposModel): Observable<TiposModel> {
-    return this.http.post<TiposModel>(`${this.url}/tadmtipoinmueble`, {
+    return this.http.post<TiposModel>(`${this.url}/tadmtipoinmuebles`, {
       nombre: info.nombre,
       descripcion: info.descripcion
     }, {
@@ -37,7 +37,7 @@ export class TipoService {
   }
 
   EliminarTipo(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/tadmtipoinmueble/${id}`, {
+    return this.http.delete<any>(`${this.url}/tadmtipoinmuebles/${id}`, {
       headers: new HttpHeaders(
         {
           Authorizacion: `Bearer ${this.tk}`
@@ -47,15 +47,15 @@ export class TipoService {
   }
 
   ObtenerListaTipo(): Observable<TiposModel[]> {
-    return this.http.get<TiposModel[]>(`${this.url}/tadmtipoinmueble`);
+    return this.http.get<TiposModel[]>(`${this.url}/tadmtipoinmuebles`);
   }
 
   ObtenerTipo(id: number): Observable<TiposModel> {
-    return this.http.get<TiposModel>(`${this.url}/tadmtipoinmueble/${id}`);
+    return this.http.get<TiposModel>(`${this.url}/tadmtipoinmuebles/${id}`);
   }
 
   EditarListaTipo(data : TiposModel): Observable<TiposModel> {
-    return this.http.put<TiposModel>(`${this.url}/tadmtipoinmueble/${data.id}`,{
+    return this.http.put<TiposModel>(`${this.url}/tadmtipoinmuebles/${data.idTipoInmueble}`,{
       nombre: data.nombre,
       descripcion: data.descripcion
     });

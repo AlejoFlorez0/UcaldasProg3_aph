@@ -20,13 +20,14 @@ export class MultaService {
   }
 
   ListaDeMultas(): Observable<MultaModel[]> {
-    return this.http.get<MultaModel[]>(`${this.url}/tadmmulta`)
+    return this.http.get<MultaModel[]>(`${this.url}/tadmmultas`)
   }
 
   GuardarListaMultas(info: MultaModel): Observable<MultaModel> {
-    return this.http.post<MultaModel>(`${this.url}/tadmmulta`, {
+    return this.http.post<MultaModel>(`${this.url}/tadmmultas`, {
       nombre: info.nombre,
-      descripcion: info.descripcion
+      descripcion: info.descripcion,
+      valor: info.valor
     }, {
       headers: new HttpHeaders(
         {
@@ -38,7 +39,7 @@ export class MultaService {
   }
 
   EliminarMulta(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/tadmmulta/${id}`, {
+    return this.http.delete<any>(`${this.url}/tadmmultas/${id}`, {
       headers: new HttpHeaders(
         {
           Authorizacion: `Bearer ${this.tk}`
@@ -48,15 +49,15 @@ export class MultaService {
   }
 
   ObtenerListaMulta(): Observable<MultaModel[]> {
-    return this.http.get<MultaModel[]>(`${this.url}/tadmmulta`);
+    return this.http.get<MultaModel[]>(`${this.url}/tadmmultas`);
   }
 
   ObtenerMulta(id: number): Observable<MultaModel> {
-    return this.http.get<MultaModel>(`${this.url}/tadmmulta/${id}`);
+    return this.http.get<MultaModel>(`${this.url}/tadmmultas/${id}`);
   }
 
   EditarListaMulta(data: MultaModel): Observable<MultaModel> {
-    return this.http.put<MultaModel>(`${this.url}/tadmmulta/${data.id}`, {
+    return this.http.put<MultaModel>(`${this.url}/tadmmultas/${data.idMulta}`, {
       nombre: data.nombre,
       valor: data.valor,
       descripcion: data.descripcion

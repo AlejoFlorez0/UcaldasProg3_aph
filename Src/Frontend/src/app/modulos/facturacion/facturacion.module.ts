@@ -13,6 +13,7 @@ import { CrearMultaComponent } from './Multa/crear-multa/crear-multa.component';
 import { ListarMultaComponent } from './Multa/listar-multa/listar-multa.component';
 import { EditarMultaComponent } from './Multa/editar-multa/editar-multa.component';
 import { AnularMultaComponent } from './Multa/anular-multa/anular-multa.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { AnularMultaComponent } from './Multa/anular-multa/anular-multa.componen
   ],
   imports: [
     CommonModule,
-    FacturacionRoutingModule
+    FacturacionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class FacturacionModule { }

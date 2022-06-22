@@ -20,11 +20,11 @@ export class SeccionService {
   }
 
   ListaDeSeccion(): Observable<SeccionModel[]> {
-    return this.http.get<SeccionModel[]>(`${this.url}/tadmseccion`)
+    return this.http.get<SeccionModel[]>(`${this.url}/tadmseccions`)
   }
 
   GuardarListaSeccion(info: SeccionModel): Observable<SeccionModel> {
-    return this.http.post<SeccionModel>(`${this.url}/tadmseccion`, {
+    return this.http.post<SeccionModel>(`${this.url}/tadmseccions`, {
       nombre: info.nombre,
       descripcion: info.descripcion
     }, {
@@ -38,7 +38,7 @@ export class SeccionService {
   }
 
   EliminarSeccion(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/tadmseccion/${id}`, {
+    return this.http.delete<any>(`${this.url}/tadmseccions/${id}`, {
       headers: new HttpHeaders(
         {
           Authorizacion: `Bearer ${this.tk}`
@@ -48,15 +48,15 @@ export class SeccionService {
   }
 
   ObtenerListaSeccion(): Observable<SeccionModel[]> {
-    return this.http.get<SeccionModel[]>(`${this.url}/tadmseccion`);
+    return this.http.get<SeccionModel[]>(`${this.url}/tadmseccions`);
   }
 
   ObtenerSeccion(id: number): Observable<SeccionModel> {
-    return this.http.get<SeccionModel>(`${this.url}/tadmseccion/${id}`);
+    return this.http.get<SeccionModel>(`${this.url}/tadmseccions/${id}`);
   }
 
   EditarListaSeccion(data : SeccionModel): Observable<SeccionModel> {
-    return this.http.put<SeccionModel>(`${this.url}/tadmseccion/${data.id}`,{
+    return this.http.put<SeccionModel>(`${this.url}/tadmseccions/${data.id}`,{
       nombre: data.nombre,
       descripcion: data.descripcion
     });

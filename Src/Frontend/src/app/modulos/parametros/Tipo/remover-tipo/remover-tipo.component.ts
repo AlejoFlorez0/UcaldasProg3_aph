@@ -29,8 +29,8 @@ export class RemoverTipoComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.servicio.ObtenerTipo(id).subscribe({
       next: (data: TiposModel) => {
-        if(data.id && data.nombre && data.descripcion){
-        this.id = data.id;
+        if(data.idTipoInmueble && data.nombre && data.descripcion){
+        this.id = data.idTipoInmueble;
         this.name =data.nombre;
         this.description =data.descripcion;
 

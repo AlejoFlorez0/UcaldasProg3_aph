@@ -1,0 +1,20 @@
+<div class="row">
+    <!--<form [FormGroup]="dataForm" class="col s12">-->
+      <div class="row">
+        <div class="input-field col s12">
+          <input formControlName="name" id="txtName" type="text">
+          <label for="txtName">Nombre</label>
+        </div>
+        <div class="input-field col s12">
+            <input formControlName="descripcion" id="txtDescripcion" type="text">
+            <label for="txtName">Descripcion</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <button type="button" class="btn btn-success" (click)="guardarDatos()">Guardar</button>
+          &nbsp;<a class="btn btn-warning orange" routerLink="parametros/Listar-Tipo">Cancelar</a>
+        </div>
+      </div>
+   <!--</form>-->
+  </div>

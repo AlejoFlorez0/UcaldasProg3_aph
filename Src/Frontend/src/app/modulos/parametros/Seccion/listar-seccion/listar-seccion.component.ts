@@ -27,7 +27,7 @@ export class ListarSeccionComponent implements OnInit {
   }
 
   ObtenerSeccion() {
-    this.servicio.ObtenerListaSeccion().subscribe({
+    this.servicio.ListaDeSeccion().subscribe({
       next: (datos: SeccionModel[]) => {
         this.listasSeccion = datos
       }

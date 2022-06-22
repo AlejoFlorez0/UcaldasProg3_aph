@@ -26,10 +26,10 @@ const routes: Routes = [
     path:"Crear-Multa",
     component: CrearMultaComponent
   },{
-    path:"Editar-Multa",
+    path:"Editar-Multa/:id",
     component: EditarMultaComponent
   },{
-    path:"Anular-Multa",
+    path:"Anular-Multa/:id",
     component: AnularMultaComponent
   },{
     path:"Listar-Multa",

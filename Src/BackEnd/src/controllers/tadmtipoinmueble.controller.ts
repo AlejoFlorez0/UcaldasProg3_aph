@@ -1,25 +1,19 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import { Tadmtipoinmueble } from '../models';
-import { TadmtipoinmuebleRepository } from '../repositories';
-import { authenticate } from '@loopback/authentication';
+import {Tadmtipoinmueble} from '../models';
+import {TadmtipoinmuebleRepository} from '../repositories';
 
 export class TadmtipoinmuebleController {
   constructor(
@@ -27,11 +21,12 @@ export class TadmtipoinmuebleController {
     public tadmtipoinmuebleRepository: TadmtipoinmuebleRepository,
   ) { }
 
-  @authenticate('Administrator')
+  //@authenticate('Administrator')
+  @authenticate.skip()
   @post('/tadmtipoinmuebles')
   @response(200, {
     description: 'Tadmtipoinmueble model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tadmtipoinmueble) } },
+    content: {'application/json': {schema: getModelSchemaRef(Tadmtipoinmueble)}},
   })
   async create(
     @requestBody({
@@ -52,7 +47,7 @@ export class TadmtipoinmuebleController {
   @get('/tadmtipoinmuebles/count')
   @response(200, {
     description: 'Tadmtipoinmueble model count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tadmtipoinmueble) where?: Where<Tadmtipoinmueble>,
@@ -67,7 +62,7 @@ export class TadmtipoinmuebleController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tadmtipoinmueble, { includeRelations: true }),
+          items: getModelSchemaRef(Tadmtipoinmueble, {includeRelations: true}),
         },
       },
     },
@@ -82,13 +77,13 @@ export class TadmtipoinmuebleController {
   @patch('/tadmtipoinmuebles')
   @response(200, {
     description: 'Tadmtipoinmueble PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmtipoinmueble, { partial: true }),
+          schema: getModelSchemaRef(Tadmtipoinmueble, {partial: true}),
         },
       },
     })
@@ -103,13 +98,13 @@ export class TadmtipoinmuebleController {
     description: 'Tadmtipoinmueble model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tadmtipoinmueble, { includeRelations: true }),
+        schema: getModelSchemaRef(Tadmtipoinmueble, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tadmtipoinmueble, { exclude: 'where' }) filter?: FilterExcludingWhere<Tadmtipoinmueble>
+    @param.filter(Tadmtipoinmueble, {exclude: 'where'}) filter?: FilterExcludingWhere<Tadmtipoinmueble>
   ): Promise<Tadmtipoinmueble> {
     return this.tadmtipoinmuebleRepository.findById(id, filter);
   }
@@ -124,7 +119,7 @@ export class TadmtipoinmuebleController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmtipoinmueble, { partial: true }),
+          schema: getModelSchemaRef(Tadmtipoinmueble, {partial: true}),
         },
       },
     })
@@ -133,7 +128,7 @@ export class TadmtipoinmuebleController {
     await this.tadmtipoinmuebleRepository.updateById(id, tadmtipoinmueble);
   }
 
-  @authenticate('Administrator')
+  //@authenticate('Administrator')
   @put('/tadmtipoinmuebles/{id}')
   @response(204, {
     description: 'Tadmtipoinmueble PUT success',

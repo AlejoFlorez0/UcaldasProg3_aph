@@ -1,25 +1,19 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import { Tadmmulta } from '../models';
-import { TadmmultaRepository } from '../repositories';
-import { authenticate } from '@loopback/authentication';
+import {Tadmmulta} from '../models';
+import {TadmmultaRepository} from '../repositories';
 
 export class TadmmultaController {
   constructor(
@@ -27,11 +21,12 @@ export class TadmmultaController {
     public tadmmultaRepository: TadmmultaRepository,
   ) { }
 
-  @authenticate('Administrator', 'Owner')
+  //@authenticate('Administrator', 'Owner')
+  @authenticate.skip()
   @post('/tadmmultas')
   @response(200, {
     description: 'Tadmmulta model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tadmmulta) } },
+    content: {'application/json': {schema: getModelSchemaRef(Tadmmulta)}},
   })
   async create(
     @requestBody({
@@ -53,7 +48,7 @@ export class TadmmultaController {
   @get('/tadmmultas/count')
   @response(200, {
     description: 'Tadmmulta model count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tadmmulta) where?: Where<Tadmmulta>,
@@ -61,7 +56,7 @@ export class TadmmultaController {
     return this.tadmmultaRepository.count(where);
   }
 
-  @authenticate('Administrator', 'Accountant')
+  //@authenticate('Administrator', 'Accountant')
   @get('/tadmmultas')
   @response(200, {
     description: 'Array of Tadmmulta model instances',
@@ -69,7 +64,7 @@ export class TadmmultaController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tadmmulta, { includeRelations: true }),
+          items: getModelSchemaRef(Tadmmulta, {includeRelations: true}),
         },
       },
     },
@@ -84,13 +79,13 @@ export class TadmmultaController {
   @patch('/tadmmultas')
   @response(200, {
     description: 'Tadmmulta PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmmulta, { partial: true }),
+          schema: getModelSchemaRef(Tadmmulta, {partial: true}),
         },
       },
     })
@@ -100,19 +95,20 @@ export class TadmmultaController {
     return this.tadmmultaRepository.updateAll(tadmmulta, where);
   }
 
-  @authenticate('Administrator', 'Owner', 'Residents', 'Accountant')
+  //@authenticate('Administrator', 'Owner', 'Residents', 'Accountant')
+  @authenticate.skip()
   @get('/tadmmultas/{id}')
   @response(200, {
     description: 'Tadmmulta model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tadmmulta, { includeRelations: true }),
+        schema: getModelSchemaRef(Tadmmulta, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tadmmulta, { exclude: 'where' }) filter?: FilterExcludingWhere<Tadmmulta>
+    @param.filter(Tadmmulta, {exclude: 'where'}) filter?: FilterExcludingWhere<Tadmmulta>
   ): Promise<Tadmmulta> {
     return this.tadmmultaRepository.findById(id, filter);
   }
@@ -127,7 +123,7 @@ export class TadmmultaController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tadmmulta, { partial: true }),
+          schema: getModelSchemaRef(Tadmmulta, {partial: true}),
         },
       },
     })
@@ -136,7 +132,8 @@ export class TadmmultaController {
     await this.tadmmultaRepository.updateById(id, tadmmulta);
   }
 
-  @authenticate('Administrator')
+  //@authenticate('Administrator')
+  @authenticate.skip()
   @put('/tadmmultas/{id}')
   @response(204, {
     description: 'Tadmmulta PUT success',
@@ -148,7 +145,8 @@ export class TadmmultaController {
     await this.tadmmultaRepository.replaceById(id, tadmmulta);
   }
 
-  @authenticate('Administrator')
+  //@authenticate('Administrator')
+  @authenticate.skip()
   @del('/tadmmultas/{id}')
   @response(204, {
     description: 'Tadmmulta DELETE success',

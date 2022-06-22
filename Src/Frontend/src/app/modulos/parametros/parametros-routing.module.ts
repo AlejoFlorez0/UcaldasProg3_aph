@@ -46,10 +46,10 @@ const routes: Routes = [
     path:"Crear-Seccion",
     component: CrearSeccionComponent
   },{
-    path:"Editar-Seccion",
+    path:"Editar-Seccion/:id",
     component:  EditarSeccionComponent
   },{
-    path:"Eliminar-Seccion",
+    path:"Eliminar-Seccion/:id",
     component: RemoverSeccionComponent
   },{
     path:"Listar-Seccion",
@@ -58,10 +58,10 @@ const routes: Routes = [
     path:"Crear-Tipo",
     component: CrearTipoComponent
   },{
-    path:"Editar-Tipo",
+    path:"Editar-Tipo/:id",
     component:  EditarTipoComponent
   },{
-    path:"Eliminar-Tipo",
+    path:"Eliminar-Tipo/:id",
     component: RemoverTipoComponent
   },{
     path:"Listar-Tipo",

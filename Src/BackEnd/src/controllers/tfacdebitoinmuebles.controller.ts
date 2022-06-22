@@ -1,25 +1,19 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import { Tfacdebitoinmuebles } from '../models';
-import { TfacdebitoinmueblesRepository } from '../repositories';
-import { authenticate } from '@loopback/authentication';
+import {Tfacdebitoinmuebles} from '../models';
+import {TfacdebitoinmueblesRepository} from '../repositories';
 
 export class TfacdebitoinmueblesController {
   constructor(
@@ -27,11 +21,12 @@ export class TfacdebitoinmueblesController {
     public tfacdebitoinmueblesRepository: TfacdebitoinmueblesRepository,
   ) { }
 
-  @authenticate('Administrator')
+  //@authenticate('Administrator')
+  @authenticate.skip()
   @post('/tfacdebitoinmuebles')
   @response(200, {
     description: 'Tfacdebitoinmuebles model instance',
-    content: { 'application/json': { schema: getModelSchemaRef(Tfacdebitoinmuebles) } },
+    content: {'application/json': {schema: getModelSchemaRef(Tfacdebitoinmuebles)}},
   })
   async create(
     @requestBody({
@@ -53,7 +48,7 @@ export class TfacdebitoinmueblesController {
   @get('/tfacdebitoinmuebles/count')
   @response(200, {
     description: 'Tfacdebitoinmuebles model count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async count(
     @param.where(Tfacdebitoinmuebles) where?: Where<Tfacdebitoinmuebles>,
@@ -69,7 +64,7 @@ export class TfacdebitoinmueblesController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Tfacdebitoinmuebles, { includeRelations: true }),
+          items: getModelSchemaRef(Tfacdebitoinmuebles, {includeRelations: true}),
         },
       },
     },
@@ -84,13 +79,13 @@ export class TfacdebitoinmueblesController {
   @patch('/tfacdebitoinmuebles')
   @response(200, {
     description: 'Tfacdebitoinmuebles PATCH success count',
-    content: { 'application/json': { schema: CountSchema } },
+    content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tfacdebitoinmuebles, { partial: true }),
+          schema: getModelSchemaRef(Tfacdebitoinmuebles, {partial: true}),
         },
       },
     })
@@ -106,13 +101,13 @@ export class TfacdebitoinmueblesController {
     description: 'Tfacdebitoinmuebles model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Tfacdebitoinmuebles, { includeRelations: true }),
+        schema: getModelSchemaRef(Tfacdebitoinmuebles, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Tfacdebitoinmuebles, { exclude: 'where' }) filter?: FilterExcludingWhere<Tfacdebitoinmuebles>
+    @param.filter(Tfacdebitoinmuebles, {exclude: 'where'}) filter?: FilterExcludingWhere<Tfacdebitoinmuebles>
   ): Promise<Tfacdebitoinmuebles> {
     return this.tfacdebitoinmueblesRepository.findById(id, filter);
   }
@@ -127,7 +122,7 @@ export class TfacdebitoinmueblesController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Tfacdebitoinmuebles, { partial: true }),
+          schema: getModelSchemaRef(Tfacdebitoinmuebles, {partial: true}),
         },
       },
     })

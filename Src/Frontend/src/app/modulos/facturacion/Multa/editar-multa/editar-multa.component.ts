@@ -46,7 +46,7 @@ export class EditarMultaComponent implements OnInit {
     let id = this.route.snapshot.params["id"];
     this.servicio.ObtenerMulta(id).subscribe({
       next: (data: MultaModel) => {
-        this.getDF["id"].setValue(data.id);
+        this.getDF["id"].setValue(data.idMulta);
         this.getDF["nombre"].setValue(data.nombre);
         this.getDF["valor"].setValue(data.nombre);
         this.getDF["descripcion"].setValue(data.descripcion)
@@ -56,8 +56,8 @@ export class EditarMultaComponent implements OnInit {
   
   guardarDatos(){
     let model = new MultaModel();
-    model.nombre = this.getDF["name"].value
-    model.id= this.getDF["id"].value
+    model.nombre = this.getDF["nombre"].value
+    model.idMulta= this.getDF["id"].value
     model.descripcion= this.getDF["descripcion"].value
     this.servicio.EditarListaMulta(model).subscribe({
       next: (data: MultaModel) =>{
