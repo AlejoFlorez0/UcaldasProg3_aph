@@ -24,7 +24,8 @@ export class InmuebleService {
 
   GuardarListaInmueble(info: InmuebleModel): Observable<InmuebleModel> {
     return this.http.post<InmuebleModel>(`${this.url}/tadminmuebles`, {
-      area: info.area,
+      idInmueble: info.idInmueble,
+      area: String(info.area),
       nroDocumentoPropietario: info.nroDocumentoPropietario,
       nroDocumentoHabitante: info.nroDocumentoHabitante,
       idSeccion: info.idSeccion,
@@ -58,13 +59,18 @@ export class InmuebleService {
   }
 
   EditarListaInmueble(data: InmuebleModel): Observable<InmuebleModel> {
-    return this.http.put<InmuebleModel>(`${this.url}/tadminmueble/${data.idInmueble}`, {
+    return this.http.put<InmuebleModel>(`${this.url}/tadminmuebles/${data.idInmueble}`, {
       area: data.area,
       nroDocumentoHabitante: data.nroDocumentoHabitante,
       nroDocumentoPropietario: data.nroDocumentoPropietario,
       idTipoInmueble: data.idTipoInmueble,
       idSeccion: data.idSeccion,
-
+    }, {
+      headers: new HttpHeaders(
+        {
+          Authorizacion: `Bearer ${this.tk}`
+        }
+      )
     });
   }
 }

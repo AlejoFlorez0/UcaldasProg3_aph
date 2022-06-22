@@ -5,20 +5,19 @@
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
+      <li *ngIf="SesionAbierta"><a routerLink="parametros/Listar-Inmueble">Listar Inmuebles</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
       <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
-      <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
-      <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="facturacion/Listar-Multa">listar multa</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="parametros/Listar-Seccion">listar Seccion</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="parametros/Listar-Tipo">listar Tipo</a></li>
       <li *ngIf="SesionAbierta"><a routerLink="seguridad/Listar-Usuario">listar Usuarios</a></li>
+      <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav Ablue" id="mobile-demo">
-  <li *ngIf="SesionAbierta"><a routerLink="seguridad/listar-rol">Listar Roles</a></li>
   <li *ngIf="!SesionAbierta"><a routerLink="seguridad/Inicio">Iniciar Sesion</a></li>
   <li *ngIf="SesionAbierta"><a routerLink="seguridad/Cerrar">Cerrar Sesion</a></li>
   <li *ngIf="SesionAbierta"><a routerLink="seguridad/Crear-Usuario">Crear Usuario</a></li>

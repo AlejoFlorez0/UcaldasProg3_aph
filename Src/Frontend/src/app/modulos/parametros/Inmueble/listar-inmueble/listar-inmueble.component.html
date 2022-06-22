@@ -1,5 +1,6 @@
 <br />
-<a routerLink="/parametros/crear-inmueble" class="btn btn-success">Agregar Rol</a>
+<a routerLink="/parametros/Crear-Inmueble" class="btn btn-success">Agregar Inmueble</a>
+<a routerLink="/inmuebleCsvFile" class="btn btn-success">Subir Archivos de Inmuebles</a>
 
 <fieldset>
     <legend>Listado de Roles</legend>
@@ -23,7 +24,7 @@
                 </th>
                 <th>
                     idSeccion
-                </th> 
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -45,10 +46,12 @@
                 </td>
                 <td>
                     {{r.idSeccion}}
-                </td> 
+                </td>
                 <td>
-                    <a routerLink="/seguridad/editarinmueble/{{r.idInmueble}}" class="btn btn-warning orange">Editar</a>&nbsp;
-                    <a routerLink="/seguridad/reomver-inmueble/{{r.idInmueble}}" class="btn btn-warning red">Eliminar</a>
+                    <a routerLink="/parametros/Editar-Inmueble/{{r.idInmueble}}"
+                        class="btn btn-warning orange">Editar</a>&nbsp;
+                    <a routerLink="/parametros/Eliminar-Inmueble/{{r.idInmueble}}"
+                        class="btn btn-warning red">Eliminar</a>
                 </td>
         </tbody>
     </table>

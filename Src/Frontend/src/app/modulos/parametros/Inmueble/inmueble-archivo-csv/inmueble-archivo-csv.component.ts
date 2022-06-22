@@ -95,7 +95,7 @@ export class InmuebleArchivoCsvComponent implements OnInit {
 
       this.servicio.GuardarListaInmueble(model).subscribe({
         next: (data: InmuebleModel) => {
-          console.log("Inmuebles Guardados");
+          window.location.href = "http://localhost:4200/parametros/Listar-Inmueble";
         }
       })
 

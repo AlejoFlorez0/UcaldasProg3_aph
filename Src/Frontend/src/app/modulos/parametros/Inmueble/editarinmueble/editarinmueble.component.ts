@@ -7,7 +7,7 @@ import { InmuebleService } from 'src/app/servicios/parametros/inmueble.service';
 
 
 
-declare const MostrarMensaje:any;
+declare const MostrarMensaje: any;
 
 @Component({
   selector: 'app-editarinmueble',
@@ -19,36 +19,38 @@ export class EditarinmuebleComponent implements OnInit {
   dataForm: FormGroup = new FormGroup({});
 
   constructor(
-    private fb:FormBuilder,
+    private fb: FormBuilder,
     private router: Router,
-    private servicio:  InmuebleService,
+    private servicio: InmuebleService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.CreacionDeFormularios()
     this.buscarDatos()
   }
 
-  CreacionDeFormularios(){
+  CreacionDeFormularios() {
     this.dataForm = this.fb.group({
-      area: ["",[Validators.required]],
-      nroDocumentoPropietario: ["",[Validators.required]],
-      nroDocumentoHabitante: ["",[Validators.required]],
-      idTipoInmueble: [1,[Validators.required]],
-      idSeccion: [1,[Validators.required]],
+      idInmueble: [],
+      area: ["", [Validators.required]],
+      nroDocumentoPropietario: ["", [Validators.required]],
+      nroDocumentoHabitante: ["", [Validators.required]],
+      idTipoInmueble: [1, [Validators.required]],
+      idSeccion: [1, [Validators.required]],
     })
   }
 
-  get getDF(){
+  get getDF() {
     return this.dataForm.controls;
   }
 
-  buscarDatos(){
-    console.log("jose");
+  buscarDatos() {
     let id = this.route.snapshot.params["id"];
     this.servicio.ObtenerInmueble(id).subscribe({
       next: (data: InmuebleModel) => {
+
+        this.getDF["idInmueble"].setValue(data.idInmueble)
         this.getDF["area"].setValue(data.area)
         this.getDF["nroDocumentoPropietario"].setValue(data.nroDocumentoPropietario)
         this.getDF["nroDocumentoHabitante"].setValue(data.nroDocumentoHabitante)
@@ -57,18 +59,20 @@ export class EditarinmuebleComponent implements OnInit {
       }
     });
   }
-  
-  guardarDatos(){
+
+  guardarDatos() {
     let model = new InmuebleModel();
+
+    model.idInmueble = this.getDF["idInmueble"].value
     model.area = this.getDF["area"].value
     model.nroDocumentoPropietario = this.getDF["nroDocumentoPropietario"].value
     model.nroDocumentoHabitante = this.getDF["nroDocumentoHabitante"].value
     model.idTipoInmueble = this.getDF["idTipoInmueble"].value
     model.idSeccion = this.getDF["idSeccion"].value
     this.servicio.EditarListaInmueble(model).subscribe({
-      next: (data: InmuebleModel) =>{
+      next: (data: InmuebleModel) => {
         MostrarMensaje(ConfiguracionInformacion.CONFIRMACION_ACTUALIZADO)
-        this.router.navigate(["/parametros/listar-inmueble"])
+        this.router.navigate(["/parametros/Listar-Inmueble"])
       }
     })
   }
